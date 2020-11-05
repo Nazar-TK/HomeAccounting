@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MyProject</string>
+    <string name="hello_world_text">Баланс: </string>
+    <string name="costs_text">Витрати -</string>
+    <string name="income_text">Доходи  +</string>
+    <string name="statistic_text">Статистика ></string>
+    <string name="balance_text">25 247</string>
+    <string name="credits_text">Кредити</string>
+    <string name="mandatory_payments_text">Обов\'язкові платежі</string>
+    <string name="transport_text">Транспорт</string>
+    <string name="activities_text">Розваги</string>
+    <string name="food_text">Харчування</string>
+    <string name="addFood_text">Додати</string>
+    <string name="enterFood_text">Введіть суму</string>
+    <string name="addTransport_text">Додати</string>
+    <string name="addFun_text">Додати</string>
+    <string name="Addcredit_text">Додати</string>
+    <string name="addUtilities_text">Додати</string>
+    <string name="addFoodtext">Введіть суму</string>
+    <string name="day_text">За останній день</string>
+    <string name="week_text">За  останній тиждень</string>
+    <string name="mounth_text">За  останній місяць</string>
+    <string name="stat_text"><![CDATA[<   Статистика]]></string>
+    <string name="year_text">За  останній рік</string>
+    <string name="allTime_text">За весь час</string>
+</resources>

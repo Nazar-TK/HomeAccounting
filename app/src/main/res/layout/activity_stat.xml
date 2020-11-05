@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screenBackground2"
+
+    tools:context=".StatActivity">
+
+    <Button
+        android:id="@+id/buttonDay"
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/day_text"
+        android:textAllCaps="false"
+        android:textColor="@color/colorStat"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
+
+    <Button
+        android:id="@+id/buttonWeek"
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:text="@string/week_text"
+        android:textAllCaps="false"
+        android:textColor="@color/colorStat"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDay" />
+
+    <Button
+        android:id="@+id/buttonMouth"
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:text="@string/mounth_text"
+        android:textAllCaps="false"
+        android:textColor="@color/colorStat"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWeek" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/stat_text"
+        android:textAllCaps="false"
+        android:textColor="@color/colorStat"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonYear"
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:text="@string/year_text"
+        android:textAllCaps="false"
+        android:textColor="@color/colorStat"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMouth" />
+    <Button
+        android:id="@+id/buttonAll"
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:text="@string/allTime_text"
+        android:textAllCaps="false"
+        android:textColor="@color/colorStat"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonYear"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

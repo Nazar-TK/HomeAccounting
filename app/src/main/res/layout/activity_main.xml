@@ -64,7 +64,7 @@
         android:layout_width="0dp"
         android:layout_height="130dp"
         android:layout_marginBottom="236dp"
-        android:background="#F44336"
+        android:background="#2196F3"
         android:onClick="StatMe"
         android:text="@string/statistic_text"
         android:textAlignment="center"

@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-//import MechaChmo.kt
+
 
 class MainActivity : AppCompatActivity()
 {
@@ -21,9 +21,7 @@ class MainActivity : AppCompatActivity()
     fun costMe (view: View){
         val costsIntent = Intent(this, CostsActivity::class.java)
         startActivity(costsIntent)
-        //var ma= MechaChmo()
-        //var innt: Int
-        //ma.vel = 15;
+
     }
     fun StatMe (view: View){
         val statIntent = Intent(this, StatActivity::class.java)

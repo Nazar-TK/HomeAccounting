@@ -19,8 +19,8 @@ class IncomeActivity : AppCompatActivity() {
                 val data: Int
                 data = editText.text.toString().toInt()
                 editText.getText().clear()
-                val ma = MechaChmo()
-                ma.vel += data;
+
+
             } else
                 Toast.makeText(this, "Спочатку введіть суму", Toast.LENGTH_LONG).show()
         }

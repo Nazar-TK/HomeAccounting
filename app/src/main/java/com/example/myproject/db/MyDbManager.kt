@@ -6,34 +6,33 @@ import android.database.sqlite.SQLiteDatabase
 
 class MyDbManager(context: Context) {
 
-    val myDbHelper = MyDbHelper(context)
+    private val myDbHelper = MyDbHelper(context)
     var db: SQLiteDatabase? = null
 
     fun openDb() {
-
         db = myDbHelper.writableDatabase
     }
 
-    fun insertToDb(category: String) {
+    fun insertToDb(data: String, tableName: String, columnName: String) {
 
         val values = ContentValues().apply {
 
-            put(DataBase.COLUMN_INCOME_CATEGORY, category)
+            put(columnName, data)
         }
 
-        db?.insert(DataBase.TABLE_INCOME_CATEGORIES_NAME, null, values)
+        db?.insert(tableName, null, values)
     }
 
-    fun readDbData(): ArrayList<String> {
+    fun readDbData(tableName: String, columnName: String): ArrayList<String> {
 
         val dataList = ArrayList<String>()
 
-          val cursor = db?.query(DataBase.TABLE_INCOME_CATEGORIES_NAME, null, null, null,
+          val cursor = db?.query(tableName, null, null, null,
                                                            null, null, null)
 
             while (cursor?.moveToNext()!!) {
 
-                val dataText = cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_INCOME_CATEGORY))
+                val dataText = cursor.getString(cursor.getColumnIndex(columnName))
                 dataList.add(dataText.toString())
             }
             cursor.close()

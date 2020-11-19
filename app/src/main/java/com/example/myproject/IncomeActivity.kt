@@ -33,7 +33,7 @@ class IncomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         myDbManager.openDb()
-        val dataList = myDbManager.readDbData()
+        val dataList = myDbManager.readDbData("income", "income value")
 
         for (item in dataList)
         {
@@ -44,9 +44,9 @@ class IncomeActivity : AppCompatActivity() {
     fun onClickSave(view: View) {
         tvTest.text = ""
 
-        myDbManager.insertToDb(editText.text.toString())
+        myDbManager.insertToDb(editText.text.toString(), "income", "income value")
 
-        val dataList = myDbManager.readDbData()
+        val dataList = myDbManager.readDbData("income", "income value")
 
         for (item in dataList)
         {

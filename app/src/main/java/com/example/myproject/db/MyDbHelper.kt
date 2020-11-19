@@ -4,17 +4,18 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class MyDbHelper(context: Context) : SQLiteOpenHelper(context, MyDbNameClass.DATABASE_NAME, null, MyDbNameClass.DATABASE_VERSION)
+class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DataBase.DATABASE_NAME, null, DataBase.DATABASE_VERSION)
 {
 
     override fun onCreate(db: SQLiteDatabase?)
     {
-        db?.execSQL(MyDbNameClass.CREATE_TABLE)
+        db?.execSQL(DataBase.CREATE_INCOME_CATEGORIES_TABLE)
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)
     {
-        db?.execSQL(MyDbNameClass.DELETE_TABLE)
+        db?.execSQL(DataBase.DELETE_TABLE)
         onCreate(db)
     }
 }

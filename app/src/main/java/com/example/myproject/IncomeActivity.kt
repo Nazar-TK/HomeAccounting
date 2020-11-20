@@ -31,6 +31,7 @@ class IncomeActivity : AppCompatActivity() {
 //    }
 
     override fun onResume() {
+
         super.onResume()
 //        myDbManager.openDb()
 //        val dataList = myDbManager.readDbData()

@@ -15,8 +15,7 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val myDbManager = MyDbManager(this)
-        val ma= MechaChmo()
-        balance.text = ma.vel.toString()
+        balance.text = 0.toString()
 
     }
 

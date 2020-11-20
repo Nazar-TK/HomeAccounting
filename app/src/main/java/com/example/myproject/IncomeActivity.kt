@@ -32,27 +32,27 @@ class IncomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        myDbManager.openDb()
-        val dataList = myDbManager.readDbData("income", "income value")
-
-        for (item in dataList)
-        {
-            tvTest.append(item)
-            tvTest.append("\n")
-        }
+//        myDbManager.openDb()
+//        val dataList = myDbManager.readDbData()
+//
+//        for (item in dataList)
+//        {
+//            tvTest.append(item)
+//            tvTest.append("\n")
+//        }
     }
     fun onClickSave(view: View) {
-        tvTest.text = ""
-
-        myDbManager.insertToDb(editText.text.toString(), "income", "income value")
-
-        val dataList = myDbManager.readDbData("income", "income value")
-
-        for (item in dataList)
-        {
-            tvTest.append(item)
-            tvTest.append("\n")
-        }
+//        tvTest.text = ""
+//
+//        myDbManager.insertToDb(editText.text.toString(), "income", "income value")
+//
+//        val dataList = myDbManager.readDbData("income", "income value")
+//
+//        for (item in dataList)
+//        {
+//            tvTest.append(item)
+//            tvTest.append("\n")
+//        }
     }
 
     override fun onDestroy() {

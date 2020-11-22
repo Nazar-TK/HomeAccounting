@@ -6,13 +6,15 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DataBase.DATABASE_NAME, null, DataBase.DATABASE_VERSION)
 {
-    override fun onCreate(db: SQLiteDatabase?)
-    {
+
+    override fun onCreate(db: SQLiteDatabase?) {
+
         db?.execSQL(DataBase.CREATE_INCOME_TABLE)
         db?.execSQL(DataBase.CREATE_OUTCOME_TABLE)
         db?.execSQL(DataBase.CREATE_INCOME_CATEGORY_TABLE)
         db?.execSQL(DataBase.CREATE_OUTCOME_CATEGORY_TABLE)
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)
     {

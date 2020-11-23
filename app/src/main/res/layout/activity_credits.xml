@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="414dp"
+        android:layout_height="686dp"
         android:layout_marginBottom="148dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/credyt" />
 
     <EditText
-        android:id="@+id/editSum"
+        android:id="@+id/creditSum"
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
@@ -28,17 +28,20 @@
         android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/add_credit_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/add_credit_button"
         android:layout_width="190dp"
         android:layout_height="80dp"
         android:layout_marginBottom="80dp"
         android:background="#FFC107"
         android:text="@string/Addcredit_text"
+        android:onClick="saveCredit"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

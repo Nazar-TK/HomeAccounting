@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
-import kotlinx.android.synthetic.main.activity_cocts.*
 import kotlinx.android.synthetic.main.activity_credits.*
 
 

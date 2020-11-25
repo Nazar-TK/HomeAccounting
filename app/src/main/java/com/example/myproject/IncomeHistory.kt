@@ -39,6 +39,7 @@ class IncomeHistory : AppCompatActivity() {
                 sum = sum + item.toFloat()
            // }
           // i++
+
         }
 
         summ.text = sum.toString()

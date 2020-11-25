@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/activities" />
 
     <EditText
-        android:id="@+id/editSum"
+        android:id="@+id/entertainmentSum"
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
@@ -28,18 +28,19 @@
         android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/add_entertainment_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/add_entertainment_button"
         android:layout_width="190dp"
         android:layout_height="80dp"
         android:layout_marginBottom="80dp"
         android:background="#03A9F4"
         android:text="@string/addFun_text"
         android:textSize="24sp"
+        android:onClick="saveEntertainment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"

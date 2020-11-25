@@ -15,7 +15,7 @@ class FunActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fun)
     }
-    val myDbManager = MyDbManager(this)
+    val myDbManager = MyDbManager.getInstance(this)
     override fun onResume() {
         super.onResume()
         myDbManager.openDb()

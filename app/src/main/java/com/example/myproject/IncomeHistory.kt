@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_income_history.*
 
 class IncomeHistory : AppCompatActivity() {
 
-    val myDbManager = MyDbManager(this)
+    val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_history)

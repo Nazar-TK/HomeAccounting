@@ -18,7 +18,7 @@ class TransportActivity : AppCompatActivity() {
 
 
 
-    val myDbManager = MyDbManager(this)
+    val myDbManager = MyDbManager.getInstance(this)
     override fun onResume() {
         super.onResume()
         myDbManager.openDb()

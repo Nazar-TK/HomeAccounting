@@ -16,7 +16,7 @@ class CreditsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_credits)
     }
 
-    val myDbManager = MyDbManager(this)
+    val myDbManager = MyDbManager.getInstance(this)
     override fun onResume() {
         super.onResume()
         myDbManager.openDb()

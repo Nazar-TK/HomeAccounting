@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_income.*
 
 class IncomeActivity : AppCompatActivity() {
 
-    val myDbManager = MyDbManager(this)
+    val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income)

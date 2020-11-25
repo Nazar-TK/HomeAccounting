@@ -4,7 +4,19 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 
-class MyDbManager(context: Context) {
+class MyDbManager private constructor(context: Context) {
+
+    companion object {
+        var dbmanager: MyDbManager? = null
+        fun getInstance(context: Context): MyDbManager{
+            dbmanager?.let{
+                return it
+            }
+            val instance = MyDbManager(context)
+            dbmanager = instance
+            return instance
+        }
+    }
 
     private val myDbHelper = MyDbHelper(context)
     var db: SQLiteDatabase? = null

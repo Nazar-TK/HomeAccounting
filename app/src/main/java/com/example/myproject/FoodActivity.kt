@@ -16,7 +16,7 @@ class FoodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food1)
     }
-    val myDbManager = MyDbManager(this)
+    val myDbManager = MyDbManager.getInstance(this)
     override fun onResume() {
         super.onResume()
         myDbManager.openDb()

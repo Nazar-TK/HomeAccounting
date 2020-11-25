@@ -16,7 +16,7 @@ class UtilitiesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_utilities)
     }
 
-    val myDbManager = MyDbManager(this)
+    val myDbManager = MyDbManager.getInstance(this)
     override fun onResume() {
         super.onResume()
         myDbManager.openDb()

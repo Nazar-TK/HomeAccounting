@@ -16,16 +16,19 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DataBase.DATABASE
         db?.execSQL(DataBase.CREATE_OUTCOME_CATEGORY_TABLE)
 
 
-        val values = ContentValues().apply {
-            put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME,"credits")
-            put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME,"food")
-            put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME,"entertainment")
-            put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME,"transport")
-            put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME,"utilites")
+        var values= ContentValues()
 
+        for (category in DataBase.OutcomeCategories) {
+            values = ContentValues().apply {
+                put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME, category)
+            }
+            db?.insert(DataBase.TABLE_OUTCOME_CATEGORY_NAME, null, values)
         }
-        db?.insert(DataBase.TABLE_OUTCOME_CATEGORY_NAME, null, values)
+
+
+
     }
+
 
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)

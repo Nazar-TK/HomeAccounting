@@ -20,29 +20,39 @@ class IncomeHistory : AppCompatActivity() {
         super.onResume()
 
         myDbManager.openDb()
-        val dataList = myDbManager.readDbData(DataBase.TABLE_INCOME_NAME)
-        var sum=0.0
+//        val dataList = myDbManager.readDbData(DataBase.TABLE_OUTCOME_CATEGORY_NAME)
+//        var sum=0.0
+//        var i=0
+//        for (item in dataList) {
+//
+//                category.append(item)
+//                category.append("\n")
+////            } else {
+////                category.append(item)
+////                category.append("\n")
+////            }
+////            i++
+//        }
+//        category.append("\n")
         var i=0
-        for (item in dataList) {
-            //if(i<dataList.size/2)
-            // {
-            category.append(item)
-            category.append("\n")
-        }
-           // }
-           // else
-            //{
         val outcomeList = myDbManager.readDbData(DataBase.TABLE_OUTCOME_NAME)
         for (item in outcomeList) {
+            if (i < outcomeList.size / 2) {
+                category.append(myDbManager.getParticularUserData(item))
+                category.append("\n")
+            } else {
                 historyData.append(item)
                 historyData.append("\n")
-                sum = sum + item.toFloat()
-           // }
-          // i++
-
+            }
+            i++
         }
+               // sum = sum + item.toFloat()
+           // }
+          //
 
-        summ.text = sum.toString()
+        //}
+
+       // summ.text = sum.toString()
     }
 
 }

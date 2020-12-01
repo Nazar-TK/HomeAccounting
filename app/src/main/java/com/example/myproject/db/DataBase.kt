@@ -44,6 +44,10 @@ object DataBase : BaseColumns{
     val TableIncomeCategory: Array<String> = arrayOf(COLUMN_INCOME_CATEGORY_NAME)
     val TableOutcomeCategory: Array<String> = arrayOf(COLUMN_OUTCOME_CATEGORY_NAME)
 
+    //Table categories
+    val OutcomeCategories: Array<String> = arrayOf("credits","food","entertainment","transport","utilites")
+
+
     // Table Delete Statements
     const val DELETE_TABLE_INCOME = "DROP TABLE IF EXISTS $TABLE_INCOME_NAME"
     const val DELETE_TABLE_OUTCOME = "DROP TABLE IF EXISTS $TABLE_OUTCOME_NAME"

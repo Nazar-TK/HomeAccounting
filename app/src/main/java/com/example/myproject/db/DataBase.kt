@@ -38,11 +38,16 @@ object DataBase : BaseColumns{
             "${BaseColumns._ID} INTEGER PRIMARY KEY, $COLUMN_OUTCOME_CATEGORY_NAME TEXT)"
 
 
-    //Arrays Of Columns
+    //Arrays Of Columns names
     val TableIncome: Array<String> = arrayOf(COLUMN_INCOME_CATEGORY_ID, COLUMN_INCOME_VALUE)
     val TableOutcome: Array<String> = arrayOf(COLUMN_OUTCOME_CATEGORY_ID, COLUMN_OUTCOME_VALUE)
     val TableIncomeCategory: Array<String> = arrayOf(COLUMN_INCOME_CATEGORY_NAME)
     val TableOutcomeCategory: Array<String> = arrayOf(COLUMN_OUTCOME_CATEGORY_NAME)
+
+
+    val mapTableColumns = mutableMapOf(TABLE_INCOME_NAME to TableIncome, TABLE_OUTCOME_NAME to TableOutcome,
+        TABLE_INCOME_CATEGORY_NAME to TableIncomeCategory, TABLE_OUTCOME_CATEGORY_NAME to TableOutcomeCategory);
+
 
     //Table categories
     val OutcomeCategories: Array<String> = arrayOf("credits","food","entertainment","transport","utilites")

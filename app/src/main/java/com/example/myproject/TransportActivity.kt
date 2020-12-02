@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_transport.*
+import java.text.DateFormat
+import java.util.*
 
 
 class TransportActivity : AppCompatActivity() {
@@ -25,9 +27,10 @@ class TransportActivity : AppCompatActivity() {
 
     }
     fun saveTransport(view: View) {
+        val her = arrayListOf("4", transportSum.text.toString(), DateFormat.getInstance().format( Calendar.getInstance().getTime()))
         if(transportSum.text.isNotEmpty()) {
             myDbManager.insertToDb(
-                arrayListOf("4", transportSum.text.toString()),
+                arrayListOf("4", transportSum.text.toString(), DateFormat.getInstance().format( Calendar.getInstance().getTime())),
                 DataBase.TABLE_OUTCOME_NAME
             )
             transportSum.text.clear()

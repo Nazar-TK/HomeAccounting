@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IncomeHistory">
+    tools:context=".OutcomeHistory">
 
     <EditText
-        android:id="@+id/categoryIncome"
+        android:id="@+id/categoryOutcome"
         android:layout_width="133dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="46dp"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine|textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/sumIncome"
-        app:layout_constraintEnd_toStartOf="@+id/historyIncomeData"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/historyOutcomeData"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/sumIncome"
+        android:id="@+id/sumOutcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine|textImeMultiLine"
@@ -31,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/historyIncomeData"
+        android:id="@+id/historyOutcomeData"
         android:layout_width="133dp"
         android:layout_height="0dp"
         android:layout_marginEnd="4dp"
@@ -45,17 +46,17 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/historyIncomeDate"
+        android:id="@+id/historyOutcomeDate"
         android:layout_width="133dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="144dp"
         android:layout_marginBottom="46dp"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine|textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/historyOutcomeData"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

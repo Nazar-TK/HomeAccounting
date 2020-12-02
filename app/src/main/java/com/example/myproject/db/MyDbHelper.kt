@@ -15,8 +15,7 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DataBase.DATABASE
         db?.execSQL(DataBase.CREATE_INCOME_CATEGORY_TABLE)
         db?.execSQL(DataBase.CREATE_OUTCOME_CATEGORY_TABLE)
 
-
-        var values= ContentValues()
+        var values = ContentValues()
 
         for (category in DataBase.OutcomeCategories) {
             values = ContentValues().apply {
@@ -24,13 +23,8 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DataBase.DATABASE
             }
             db?.insert(DataBase.TABLE_OUTCOME_CATEGORY_NAME, null, values)
         }
-
-
-
     }
-
-
-
+    
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)
     {
         db?.execSQL(DataBase.DELETE_TABLE_INCOME)

@@ -22,14 +22,15 @@ object DataBase : BaseColumns{
     const val COLUMN_OUTCOME_VALUE = "outcome_value"
     const val COLUMN_INCOME_CATEGORY_NAME = "income_category_name"
     const val COLUMN_OUTCOME_CATEGORY_NAME = "outcome_category_name"
-
+    const val COLUMN_INCOME_DATE_NAME = "income_data_name"
+    const val COLUMN_OUTCOME_DATE_NAME = "outcome_data_name"
 
     // Table Create Statements
     const val CREATE_INCOME_TABLE = "CREATE TABLE IF NOT EXISTS $TABLE_INCOME_NAME (" +
-            "${BaseColumns._ID} INTEGER PRIMARY KEY, $COLUMN_INCOME_CATEGORY_ID TEXT, $COLUMN_INCOME_VALUE TEXT)"
+            "${BaseColumns._ID} INTEGER PRIMARY KEY, $COLUMN_INCOME_CATEGORY_ID TEXT, $COLUMN_INCOME_VALUE TEXT, $COLUMN_INCOME_DATE_NAME TEXT)"
 
     const val CREATE_OUTCOME_TABLE = "CREATE TABLE IF NOT EXISTS $TABLE_OUTCOME_NAME (" +
-            "${BaseColumns._ID} INTEGER PRIMARY KEY, $COLUMN_OUTCOME_CATEGORY_ID TEXT, $COLUMN_OUTCOME_VALUE TEXT)"
+            "${BaseColumns._ID} INTEGER PRIMARY KEY, $COLUMN_OUTCOME_CATEGORY_ID TEXT, $COLUMN_OUTCOME_VALUE TEXT, $COLUMN_OUTCOME_DATE_NAME TEXT)"
 
     const val CREATE_INCOME_CATEGORY_TABLE = "CREATE TABLE IF NOT EXISTS $TABLE_INCOME_CATEGORY_NAME (" +
             "${BaseColumns._ID} INTEGER PRIMARY KEY, $COLUMN_INCOME_CATEGORY_NAME TEXT)"
@@ -37,17 +38,14 @@ object DataBase : BaseColumns{
     const val CREATE_OUTCOME_CATEGORY_TABLE = "CREATE TABLE IF NOT EXISTS $TABLE_OUTCOME_CATEGORY_NAME (" +
             "${BaseColumns._ID} INTEGER PRIMARY KEY, $COLUMN_OUTCOME_CATEGORY_NAME TEXT)"
 
-
-    //Arrays Of Columns names
-    val TableIncome: Array<String> = arrayOf(COLUMN_INCOME_CATEGORY_ID, COLUMN_INCOME_VALUE)
-    val TableOutcome: Array<String> = arrayOf(COLUMN_OUTCOME_CATEGORY_ID, COLUMN_OUTCOME_VALUE)
+    //Arrays Of Columns
+    val TableIncome: Array<String> = arrayOf(COLUMN_INCOME_CATEGORY_ID, COLUMN_INCOME_VALUE, COLUMN_INCOME_DATE_NAME)
+    val TableOutcome: Array<String> = arrayOf(COLUMN_OUTCOME_CATEGORY_ID, COLUMN_OUTCOME_VALUE, COLUMN_OUTCOME_DATE_NAME)
     val TableIncomeCategory: Array<String> = arrayOf(COLUMN_INCOME_CATEGORY_NAME)
     val TableOutcomeCategory: Array<String> = arrayOf(COLUMN_OUTCOME_CATEGORY_NAME)
 
-
     val mapTableColumns = mutableMapOf(TABLE_INCOME_NAME to TableIncome, TABLE_OUTCOME_NAME to TableOutcome,
         TABLE_INCOME_CATEGORY_NAME to TableIncomeCategory, TABLE_OUTCOME_CATEGORY_NAME to TableOutcomeCategory);
-
 
     //Table categories
     val OutcomeCategories: Array<String> = arrayOf("credits","food","entertainment","transport","utilites")

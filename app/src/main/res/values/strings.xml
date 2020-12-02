@@ -23,4 +23,5 @@
     <string name="stat_text"><![CDATA[<   Статистика]]></string>
     <string name="year_text">За  останній рік</string>
     <string name="allTime_text">За весь час</string>
+    <string name="History_Outcome_text">Витрати</string>
 </resources>

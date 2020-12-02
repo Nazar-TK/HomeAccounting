@@ -16,6 +16,10 @@ class StatActivity : AppCompatActivity() {
         val statIntent = Intent(this, IncomeHistory::class.java)
         startActivity(statIntent)
     }
+    fun OutcomeHistoryMe (view: View){
+        val HistoryOutcome = Intent(this,OutcomeHistory::class.java)
+        startActivity(HistoryOutcome)
+    }
 
 }
 

@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_fun.*
+import java.text.DateFormat
+import java.util.*
 
 
 class FunActivity : AppCompatActivity() {
@@ -24,7 +26,8 @@ class FunActivity : AppCompatActivity() {
     fun saveEntertainment(view: View) {
         if(entertainmentSum.text.isNotEmpty()) {
             myDbManager.insertToDb(
-                arrayListOf("3", entertainmentSum.text.toString()),
+                arrayListOf("3", entertainmentSum.text.toString(),
+                    DateFormat.getInstance().format( Calendar.getInstance().getTime())),
                 DataBase.TABLE_OUTCOME_NAME
             )
             entertainmentSum.text.clear()

@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_income.*
+import java.text.DateFormat
+import java.time.LocalDateTime
+import java.util.*
+import java.util.Calendar.getInstance
 
 class IncomeActivity : AppCompatActivity() {
 
@@ -49,8 +53,7 @@ class IncomeActivity : AppCompatActivity() {
     }
     fun saveIncome(view: View) {
         if(incomeField.text.isNotEmpty()) {
-            myDbManager.insertToDb(arrayListOf("1", incomeField.text.toString()),
-                                                                DataBase.TABLE_INCOME_NAME)
+            myDbManager.insertToDb(arrayListOf("1", incomeField.text.toString(), DateFormat.getInstance().format( Calendar.getInstance().getTime())), DataBase.TABLE_INCOME_NAME)
             incomeField.text.clear()
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }

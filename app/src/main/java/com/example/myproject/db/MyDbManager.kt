@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
+import java.sql.Date
+import java.text.SimpleDateFormat
 
 class MyDbManager private constructor(context: Context) {
 
@@ -25,7 +27,11 @@ class MyDbManager private constructor(context: Context) {
     fun openDb() {
         db = myDbHelper.writableDatabase
     }
-
+    fun GetDate(): String
+    {
+        val date = "SELECT Date('now')"
+        return date
+    }
     fun insertToDb(data: ArrayList<String>, tableName: String) {
 
         val columns:Array<String> = DataBase.mapTableColumns.getValue(tableName)
@@ -40,23 +46,6 @@ class MyDbManager private constructor(context: Context) {
 
         db?.insert(tableName, null, values)
     }
-//    fun getParticularUserData(id: String): String {
-//
-//        var userInfo  = ""
-//        val db = myDbHelper.readableDatabase
-//        //val selectQuery = "SELECT"  + "FROM " + DataBase.TABLE_OUTCOME_CATEGORY_NAME + " WHERE " + BaseColumns._ID + " = '" + id + "'"
-//        //val cursor = db?.rawQuery("SELECT" +  DataBase.COLUMN_OUTCOME_CATEGORY_NAME + "FROM" + DataBase.TABLE_OUTCOME_NAME + "WHERE" + BaseColumns._ID +"==" +id
-//        val  selectQuery = "SELECT " +  DataBase.COLUMN_OUTCOME_CATEGORY_NAME  + " FROM " + DataBase.TABLE_OUTCOME_CATEGORY_NAME + " WHERE " + BaseColumns._ID +" = " + id
-//
-//
-//        val cursor = db?.rawQuery(selectQuery,null)
-//
-//        userInfo= cursor.toString()
-//        cursor?.close()
-//        return userInfo
-//    }
-
-
     fun getParticularUserData(id: String): String {
 
         var userInfo  =  ""
@@ -85,13 +74,24 @@ class MyDbManager private constructor(context: Context) {
         val columns:Array<String> = DataBase.mapTableColumns.getValue(tableName)
 
         for (column in columns) {
-            val cursor = db?.query(tableName, null, null, null,null, null, null)
+            val cursor = db?.query(tableName, null, null, null, null, null, null)
             while (cursor?.moveToNext()!!) {
                 dataList.add(cursor.getString(cursor.getColumnIndex(column)).toString())
             }
             cursor?.close()
         }
 
+        return dataList
+    }
+    fun readColumn(tableName: String, columnName: String): ArrayList<String> {
+
+        val dataList = ArrayList<String>()
+
+        val cursor = db?.query(tableName,null, columnName, null, null, null, null)
+        while (cursor?.moveToNext()!!) {
+            dataList.add(cursor.getString(cursor.getColumnIndex(columnName)).toString())
+        }
+        cursor?.close()
         return dataList
     }
 

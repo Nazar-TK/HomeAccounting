@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_food1.*
+import java.text.DateFormat
+import java.util.*
 
 class FoodActivity : AppCompatActivity() {
 
@@ -25,7 +27,7 @@ class FoodActivity : AppCompatActivity() {
     fun saveFood(view: View) {
         if(foodSum.text.isNotEmpty()) {
             myDbManager.insertToDb(
-                arrayListOf("2", foodSum.text.toString()),
+                arrayListOf("2", foodSum.text.toString(), DateFormat.getInstance().format( Calendar.getInstance().getTime())),
                 DataBase.TABLE_OUTCOME_NAME
             )
             foodSum.text.clear()

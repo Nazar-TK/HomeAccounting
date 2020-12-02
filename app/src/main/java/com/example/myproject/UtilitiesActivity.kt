@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_utilities.*
+import java.text.DateFormat
+import java.util.*
 
 
 class UtilitiesActivity : AppCompatActivity() {
@@ -25,7 +27,7 @@ class UtilitiesActivity : AppCompatActivity() {
     fun saveUtilites(view: View) {
         if(utilitesSum.text.isNotEmpty()) {
             myDbManager.insertToDb(
-                arrayListOf("5", utilitesSum.text.toString()),
+                arrayListOf("5", utilitesSum.text.toString(), DateFormat.getInstance().format( Calendar.getInstance().getTime())),
                 DataBase.TABLE_OUTCOME_NAME
             )
             utilitesSum.text.clear()

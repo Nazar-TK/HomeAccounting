@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_credits.*
+import java.text.DateFormat
+import java.util.*
 
 
 class CreditsActivity : AppCompatActivity() {
@@ -25,7 +27,7 @@ class CreditsActivity : AppCompatActivity() {
     fun saveCredit(view: View) {
         if(creditSum.text.isNotEmpty()) {
             myDbManager.insertToDb(
-                arrayListOf("1", creditSum.text.toString()),
+                arrayListOf("1", creditSum.text.toString(), DateFormat.getInstance().format( Calendar.getInstance().getTime())),
                 DataBase.TABLE_OUTCOME_NAME
             )
             creditSum.text.clear()

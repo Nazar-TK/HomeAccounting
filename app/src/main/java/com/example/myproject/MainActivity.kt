@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity()
     }
 
     fun costMe (view: View){
-        val costsIntent = Intent(this, CostsActivity::class.java)
+        val costsIntent = Intent(this, CostChoseActivity::class.java)
         startActivity(costsIntent)
 
     }

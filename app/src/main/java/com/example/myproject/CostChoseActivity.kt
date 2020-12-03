@@ -17,7 +17,7 @@ class CostChoseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cost_chose)
         //MyDbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME)
 
-        spinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, DataBase.OutcomeCategories)
+        spinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MyDbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME))
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {

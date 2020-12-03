@@ -87,7 +87,7 @@ class MyDbManager private constructor(context: Context) {
 
         val dataList = ArrayList<String>()
 
-        val cursor = db?.query(tableName,null, columnName, null, null, null, null)
+        val cursor = db?.query(tableName,null, null, null, null, null, null)
         while (cursor?.moveToNext()!!) {
             dataList.add(cursor.getString(cursor.getColumnIndex(columnName)).toString())
         }

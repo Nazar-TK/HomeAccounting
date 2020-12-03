@@ -18,6 +18,7 @@ class CostChoseActivity : AppCompatActivity() {
         //MyDbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME)
 
         spinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, DataBase.OutcomeCategories)
+
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
                // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

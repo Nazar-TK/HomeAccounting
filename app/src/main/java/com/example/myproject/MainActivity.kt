@@ -9,7 +9,6 @@ import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-
 class MainActivity : AppCompatActivity()
 {
     val myDbManager = MyDbManager.getInstance(this)

@@ -63,6 +63,5 @@ class IncomeActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        myDbManager.closeDb()
     }
 }

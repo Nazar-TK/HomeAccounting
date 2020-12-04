@@ -26,15 +26,6 @@ class MainActivity : AppCompatActivity()
         cursor?.close()
 
 
-        if(empty)
-        {
-           myDbManager.insertToDb(arrayListOf("credits"), DataBase.TABLE_OUTCOME_CATEGORY_NAME)
-           myDbManager.insertToDb(arrayListOf("food"),DataBase.TABLE_OUTCOME_CATEGORY_NAME)
-           myDbManager.insertToDb(arrayListOf("entertainment"),DataBase.TABLE_OUTCOME_CATEGORY_NAME)
-           myDbManager.insertToDb(arrayListOf("transport"),DataBase.TABLE_OUTCOME_CATEGORY_NAME)
-           myDbManager.insertToDb(arrayListOf("utilites"),DataBase.TABLE_OUTCOME_CATEGORY_NAME)
-        }
-
         cursor = myDbManager.db?.rawQuery("SELECT COUNT(*) FROM TABLE_INCOME_CATEGORY_NAME", null)
         if (cursor != null && cursor.moveToFirst()) {
             empty = (cursor.getInt (0) == 0)

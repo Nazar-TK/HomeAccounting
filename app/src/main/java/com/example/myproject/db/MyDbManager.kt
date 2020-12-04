@@ -46,18 +46,18 @@ class MyDbManager private constructor(context: Context) {
 
         db?.insert(tableName, null, values)
     }
-    fun getParticularUserData(id: String): String {
+    fun getByID(id: String, columnName: String, tableName: String): String {
 
         var userInfo  =  ""
         val db = myDbHelper.readableDatabase
-        val  selectQuery = "SELECT " +  DataBase.COLUMN_OUTCOME_CATEGORY_NAME  + " FROM " + DataBase.TABLE_OUTCOME_CATEGORY_NAME + " WHERE " + BaseColumns._ID +" = " + id
+        val  selectQuery = "SELECT " +  columnName  + " FROM " + tableName + " WHERE " + BaseColumns._ID +" = " + id
         val cursor = db.rawQuery(selectQuery, null)
         try {
             if (cursor.getCount() != 0) {
                 cursor.moveToFirst()
                 if (cursor.getCount() > 0) {
                     do {
-                        userInfo = cursor.getString(cursor.getColumnIndex("outcome_category_name"))
+                        userInfo = cursor.getString(cursor.getColumnIndex(columnName))
 
                     } while ((cursor.moveToNext()))
                 }

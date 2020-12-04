@@ -28,8 +28,6 @@
         android:id="@+id/costs_button"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="24dp"
         android:background="#FFC107"
         android:onClick="costMe"
         android:text="@string/costs_text"
@@ -37,18 +35,17 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/income_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.828" />
 
     <Button
-        android:onClick="incomeMe"
         android:id="@+id/income_button"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="16dp"
         android:background="#3FC744"
+        android:onClick="incomeMe"
         android:text="@string/income_text"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
@@ -57,13 +54,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962" />
+        app:layout_constraintVertical_bias="0.922" />
 
     <Button
         android:id="@+id/statistic_button"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="236dp"
+        android:layout_marginBottom="172dp"
         android:background="#2196F3"
         android:onClick="StatMe"
         android:text="@string/statistic_text"
@@ -86,9 +83,9 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/statistic_button"
-        app:layout_constraintVertical_bias="0.756" />
+        app:layout_constraintVertical_bias="0.545" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

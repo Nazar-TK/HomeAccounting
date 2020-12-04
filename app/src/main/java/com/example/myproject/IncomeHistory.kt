@@ -18,26 +18,29 @@ class IncomeHistory : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        myDbManager.openDb()
-        val categoryList = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_CATEGORY_ID)
+
         var sum=0.0
+
+        //myDbManager.openDb()
+        var List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_CATEGORY_ID)
+
         var i=0
-        for (item in categoryList) {
-            categoryIncome.append(item)
-            categoryIncome.append("\n")
+        for (id in List) {
+            categoryIncome.append(myDbManager.getByID(id, DataBase.COLUMN_INCOME_CATEGORY_NAME, DataBase.TABLE_INCOME_CATEGORY_NAME) +"\n")
         }
 
-        val dataList = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)
-        for (item in dataList) {
-            historyIncomeData.append(item)
-            historyIncomeData.append("\n")
+        List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)
+        for (item in List) {
+            historyIncomeData.append(item + "\n")
             sum += item.toFloat()
         }
-        val dateList = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_DATE_NAME)
-        for (item in dateList) {
+
+        List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_DATE_NAME)
+        for (item in List) {
             historyIncomeDate.append(item + "\n")
         }
-            sumIncome.text = sum.toString()
-        }
+
+        sumIncome.text = sum.toString()
+    }
 
 }

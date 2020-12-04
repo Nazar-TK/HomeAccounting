@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity()
         cursor?.close()
 
 
+
         if(empty)
         {
             myDbManager.insertToDb(arrayListOf("salary"),DataBase.TABLE_INCOME_CATEGORY_NAME)

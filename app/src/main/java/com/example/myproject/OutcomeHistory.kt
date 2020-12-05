@@ -20,15 +20,18 @@ class OutcomeHistory : AppCompatActivity() {
         myDbManager.openDb()
         var sum=0.0
         var i=0
+
         val categoryList = myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_ID)
         for (id in categoryList) {
-            categoryOutcome.append(myDbManager.getByID(id, DataBase.COLUMN_OUTCOME_CATEGORY_NAME, DataBase.TABLE_OUTCOME_CATEGORY_NAME) + "\n")
+            categoryOutcome.append(myDbManager.getByID(id, DataBase.COLUMN_OUTCOME_CATEGORY_NAME, DataBase.TABLE_OUTCOME_CATEGORY_NAME) + "\n" + "\n")
         }
+
         val dataList = myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_VALUE)
         for (item in dataList) {
-            historyOutcomeData.append(item + "\n")
+            historyOutcomeData.append(item + "\n" + "\n")
             sum += item.toFloat()
         }
+
         val dateList = myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_DATE_NAME)
         for (item in dateList) {
             historyOutcomeDate.append(item + "\n")

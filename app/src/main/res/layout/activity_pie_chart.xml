@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:animationDuration="2000"
-            app:centerColor="@color/darkOrange"
+            app:centerColor="@color/BackgroundBlackThem"
             app:popupText="Гривень"
             app:showPercentage="true"
             app:showPopup="true" />

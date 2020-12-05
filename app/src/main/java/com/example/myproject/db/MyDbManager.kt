@@ -27,11 +27,18 @@ class MyDbManager private constructor(context: Context) {
     fun openDb() {
         db = myDbHelper.writableDatabase
     }
-    fun GetDate(): String
+
+    fun getCategorySum(idCat: String, columnName: String, tableName: String): Int
     {
-        val date = "SELECT Date('now')"
-        return date
+        val categoryList = readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_ID)
+        var sum = 0
+        for (id in categoryList) {
+            if(id == idCat)
+                sum += getBySmth(idCat, columnName, tableName, DataBase.COLUMN_OUTCOME_CATEGORY_ID).toInt()
+        }
+        return sum
     }
+
     fun insertToDb(data: ArrayList<String>, tableName: String) {
 
         val columns:Array<String> = DataBase.mapTableColumns.getValue(tableName)
@@ -46,11 +53,34 @@ class MyDbManager private constructor(context: Context) {
 
         db?.insert(tableName, null, values)
     }
+
     fun getByID(id: String, columnName: String, tableName: String): String {
 
         var userInfo  =  ""
         val db = myDbHelper.readableDatabase
         val  selectQuery = "SELECT " +  columnName  + " FROM " + tableName + " WHERE " + BaseColumns._ID +" = " + id
+        val cursor = db.rawQuery(selectQuery, null)
+        try {
+            if (cursor.getCount() != 0) {
+                cursor.moveToFirst()
+                if (cursor.getCount() > 0) {
+                    do {
+                        userInfo = cursor.getString(cursor.getColumnIndex(columnName))
+
+                    } while ((cursor.moveToNext()))
+                }
+            }
+        } finally {
+            cursor.close()
+        }
+        return userInfo
+    }
+
+    private fun getBySmth(id: String, columnName: String, tableName: String, smth:String): String {
+
+        var userInfo  =  ""
+        val db = myDbHelper.readableDatabase
+        val  selectQuery = "SELECT " +  columnName  + " FROM " + tableName + " WHERE " + smth +" = " + id
         val cursor = db.rawQuery(selectQuery, null)
         try {
             if (cursor.getCount() != 0) {
@@ -83,6 +113,7 @@ class MyDbManager private constructor(context: Context) {
 
         return dataList
     }
+
     fun readColumn(tableName: String, columnName: String): ArrayList<String> {
 
         val dataList = ArrayList<String>()

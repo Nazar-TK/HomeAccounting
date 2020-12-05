@@ -26,12 +26,12 @@ class IncomeHistory : AppCompatActivity() {
 
         var i=0
         for (id in List) {
-            categoryIncome.append(myDbManager.getByID(id, DataBase.COLUMN_INCOME_CATEGORY_NAME, DataBase.TABLE_INCOME_CATEGORY_NAME) +"\n")
+            categoryIncome.append(myDbManager.getByID(id, DataBase.COLUMN_INCOME_CATEGORY_NAME, DataBase.TABLE_INCOME_CATEGORY_NAME) + "\n" + "\n")
         }
 
         List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)
         for (item in List) {
-            historyIncomeData.append(item + "\n")
+            historyIncomeData.append(item + "\n" + "\n")
             sum += item.toFloat()
         }
 

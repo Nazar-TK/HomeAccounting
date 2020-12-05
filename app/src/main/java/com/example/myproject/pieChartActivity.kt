@@ -2,12 +2,15 @@ package com.example.myproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myproject.db.DataBase
+import com.example.myproject.db.MyDbManager
 import com.faskn.lib.PieChart
 import com.faskn.lib.Slice
 import kotlinx.android.synthetic.main.activity_pie_chart.*
-import kotlin.random.Random
 
 class pieChartActivity : AppCompatActivity() {
+    val myDbManager = MyDbManager.getInstance(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pie_chart)
@@ -24,24 +27,29 @@ class pieChartActivity : AppCompatActivity() {
 
         return arrayListOf(
             Slice(
-                10.toFloat(),
-                R.color.colorPrimary,
-                "Google"
+                myDbManager.getCategorySum("1", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                R.color.BackgroundCredits,
+                "Credits"
             ),
             Slice(
-                24.toFloat(),
-                R.color.screenBackground,
-                "Facebook"
+                myDbManager.getCategorySum("2", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                R.color.BackgroundFood,
+                "Food"
             ),
             Slice(
-               200.toFloat(),
-                R.color.screenBackground3,
-                "Twitter"
+                myDbManager.getCategorySum("3", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                R.color.BackgroundEntertainment,
+                "Entertainment"
             ),
             Slice(
-                45.toFloat(),
-                R.color.colorAccent,
-                "Other"
+                myDbManager.getCategorySum("4", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                R.color.BackgroundTransport,
+                "Transport"
+            ),
+            Slice(
+                myDbManager.getCategorySum("5", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                R.color.BackgroundUtilities,
+                "Utilities"
             )
         )
     }

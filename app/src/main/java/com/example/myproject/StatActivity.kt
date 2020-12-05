@@ -17,10 +17,13 @@ class StatActivity : AppCompatActivity() {
         startActivity(statIntent)
     }
     fun OutcomeHistoryMe (view: View){
-        val HistoryOutcome = Intent(this,pieChartActivity::class.java)
+        val HistoryOutcome = Intent(this,OutcomeHistory::class.java)
         startActivity(HistoryOutcome)
     }
-
+    fun PieChartMe (view: View){
+        val statIntent = Intent(this, pieChartActivity::class.java)
+        startActivity(statIntent)
+    }
 }
 
 

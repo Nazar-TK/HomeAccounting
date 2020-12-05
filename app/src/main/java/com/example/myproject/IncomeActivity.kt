@@ -19,37 +19,11 @@ class IncomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income)
     }
-
-
-//    incomeButton.setOnClickListener {
-//        if (incomeField.text.isNotEmpty()) {
-//            textSum.text = (textSum.text.toString().toInt() + incomeField.text.toString().toInt()).toString()
-//            Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
-//
-//            val data: Int
-//            data = incomeField.text.toString().toInt()
-//            incomeField.getText().clear()
-//
-//
-//        }
-//        else
-//        {
-//            Toast.makeText(this, "Спочатку введіть суму", Toast.LENGTH_LONG).show()
-//        }
-//
-//    }
-
     override fun onResume() {
 
         super.onResume()
         myDbManager.openDb()
-        // val dataList = myDbManager.readDbData()
 
-//        for (item in dataList)
-//        {
-//            tvTest.append(item)
-//            tvTest.append("\n")
-//        }
     }
     fun saveIncome(view: View) {
         if(incomeField.text.isNotEmpty()) {

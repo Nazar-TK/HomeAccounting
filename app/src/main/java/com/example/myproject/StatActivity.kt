@@ -17,7 +17,7 @@ class StatActivity : AppCompatActivity() {
         startActivity(statIntent)
     }
     fun OutcomeHistoryMe (view: View){
-        val HistoryOutcome = Intent(this,OutcomeHistory::class.java)
+        val HistoryOutcome = Intent(this,pieChartActivity::class.java)
         startActivity(HistoryOutcome)
     }
 

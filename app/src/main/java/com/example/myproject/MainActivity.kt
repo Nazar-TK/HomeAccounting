@@ -6,7 +6,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
+import kotlinx.android.synthetic.main.activity_income_history.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_outcome_history.*
 
 
 class MainActivity : AppCompatActivity()
@@ -14,36 +16,27 @@ class MainActivity : AppCompatActivity()
     val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        myDbManager.openDb()
         setContentView(R.layout.activity_main)
 
-        balance.text = 0.toString()
-        var empty = true
-        var cursor = myDbManager.db?.rawQuery("SELECT COUNT(*) FROM TABLE_OUTCOME_CATEGORY_NAME", null)
-        if (cursor != null && cursor.moveToFirst()) {
-            empty= (cursor.getInt (0) == 0)
-        }
-        cursor?.close()
+        var sum = 0.0
 
-
-        cursor = myDbManager.db?.rawQuery("SELECT COUNT(*) FROM TABLE_INCOME_CATEGORY_NAME", null)
-        if (cursor != null && cursor.moveToFirst()) {
-            empty = (cursor.getInt (0) == 0)
-        }
-        cursor?.close()
-
-
-
-        if(empty)
-        {
-            myDbManager.insertToDb(arrayListOf("salary"),DataBase.TABLE_INCOME_CATEGORY_NAME)
-            myDbManager.insertToDb(arrayListOf("passive income"),DataBase.TABLE_INCOME_CATEGORY_NAME)
+        val List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)
+        for (item in List) {
+            sum += item.toFloat()
         }
 
+        val dataList = myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_VALUE)
+        for (item in dataList) {
+            sum -= item.toFloat()
+        }
+
+        balance.text = sum.toString()
     }
 
     override fun onResume() {
         super.onResume()
-        myDbManager.openDb()
+
     }
 
     fun costMe (view: View){

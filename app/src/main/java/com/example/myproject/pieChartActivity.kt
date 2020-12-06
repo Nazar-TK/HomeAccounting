@@ -29,27 +29,27 @@ class pieChartActivity : AppCompatActivity() {
             Slice(
                 myDbManager.getCategorySum("1", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
                 R.color.BackgroundCredits,
-                "Credits"
+                "Кредити"
             ),
             Slice(
                 myDbManager.getCategorySum("2", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
                 R.color.BackgroundFood,
-                "Food"
+                "Харчування"
             ),
             Slice(
                 myDbManager.getCategorySum("3", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
                 R.color.BackgroundEntertainment,
-                "Entertainment"
+                "Розваги"
             ),
             Slice(
                 myDbManager.getCategorySum("4", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
                 R.color.BackgroundTransport,
-                "Transport"
+                "Транспорт"
             ),
             Slice(
                 myDbManager.getCategorySum("5", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
                 R.color.BackgroundUtilities,
-                "Utilities"
+                "Комунальні послуги"
             )
         )
     }

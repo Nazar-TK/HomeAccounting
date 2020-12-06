@@ -1,10 +1,9 @@
 package com.example.myproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
-import kotlinx.android.synthetic.main.activity_income_history.*
 import kotlinx.android.synthetic.main.activity_outcome_history.*
 
 
@@ -34,7 +33,7 @@ class OutcomeHistory : AppCompatActivity() {
 
         val dateList = myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_DATE_NAME)
         for (item in dateList) {
-            historyOutcomeDate.append(item + "\n")
+            historyOutcomeDate.append(item + "\n" + "\n")
         }
         sumOutcome.text = sum.toString()
     }

@@ -48,7 +48,7 @@ object DataBase : BaseColumns{
         TABLE_INCOME_CATEGORY_NAME to TableIncomeCategory, TABLE_OUTCOME_CATEGORY_NAME to TableOutcomeCategory);
 
     //Table categories
-    val OutcomeCategories: Array<String> = arrayOf("credits","food","entertainment","transport","utilites")
+    val OutcomeCategories: Array<String> = arrayOf("кредити","харчування","розваги","транспорт","комунальні послуги")
 
 
     // Table Delete Statements

@@ -6,9 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
-import kotlinx.android.synthetic.main.activity_income_history.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_outcome_history.*
 
 
 class MainActivity : AppCompatActivity()
@@ -19,6 +17,11 @@ class MainActivity : AppCompatActivity()
         myDbManager.openDb()
         setContentView(R.layout.activity_main)
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         var sum = 0.0
 
         val List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)
@@ -32,11 +35,6 @@ class MainActivity : AppCompatActivity()
         }
 
         balance.text = sum.toString()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 
     fun costMe (view: View){

@@ -7,12 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_income.*
-import java.text.DateFormat
-import java.time.LocalDateTime
+import java.text.SimpleDateFormat
 import java.util.*
-import java.util.Calendar.getInstance
 
 class IncomeActivity : AppCompatActivity() {
+
+    fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
+    }
 
     val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +33,7 @@ class IncomeActivity : AppCompatActivity() {
     }
     fun saveIncome(view: View) {
         if(incomeField.text.isNotEmpty()) {
-            myDbManager.insertToDb(arrayListOf("1", incomeField.text.toString(), DateFormat.getInstance().format( Calendar.getInstance().getTime())), DataBase.TABLE_INCOME_NAME)
+            myDbManager.insertToDb(arrayListOf("1", incomeField.text.toString(),  getCurrentDateTime().toString("dd/MM/yyyy")), DataBase.TABLE_INCOME_NAME)
             incomeField.text.clear()
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }

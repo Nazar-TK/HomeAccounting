@@ -1,10 +1,10 @@
 package com.example.myproject
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_cost_chose.*
@@ -46,7 +46,7 @@ class CostChoseActivity : AppCompatActivity() {
             arrayListOf(
                 idOfCategory.toString(),
                 sum,
-                getCurrentDateTime().toString("yyyy/MM/dd HH:mm:ss")
+                getCurrentDateTime().toString("dd/MM/yyyy")
             ),
             DataBase.TABLE_OUTCOME_NAME
         )

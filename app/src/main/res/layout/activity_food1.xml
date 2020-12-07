@@ -18,7 +18,7 @@
 
 
     <EditText
-        android:id="@+id/editSum"
+        android:id="@+id/foodSum"
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
@@ -37,6 +37,7 @@
     android:layout_height="80dp"
     android:layout_marginBottom="80dp"
     android:background="#FF9800"
+        android:onClick="saveFood"
     android:text="@string/addFood_text"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"

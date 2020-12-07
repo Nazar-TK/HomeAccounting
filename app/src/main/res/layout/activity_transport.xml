@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/transport" />
 
     <EditText
-        android:id="@+id/editSum"
+        android:id="@+id/transportSum"
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
@@ -27,17 +27,18 @@
         android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/add_transport_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/add_transport_button"
         android:layout_width="190dp"
         android:layout_height="80dp"
         android:layout_marginBottom="80dp"
         android:text="@string/addTransport_text"
         android:textSize="24sp"
+        android:onClick="saveTransport"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

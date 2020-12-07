@@ -3,9 +3,17 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="screenBackground">#FFFFF0</color>
+    <color name="screenBackground">#FFFFFF</color>
     <color name="colorStat">#00574B</color>
     <color name="screenBackground2">#00574B</color>
     <color name="darkOrange">#FF6B00</color>
     <color name="screenBackground3">#26CC49</color>
+
+    //new color
+    <color name="BackgroundBlackThem">#0B173B</color>
+    <color name="BackgroundCredits">#EB14E0</color>
+    <color name="BackgroundFood">#F13426</color>
+    <color name="BackgroundEntertainment">#9C27B0</color>
+    <color name="BackgroundTransport">#1FB825</color>
+    <color name="BackgroundUtilities">#009688</color>
 </resources>

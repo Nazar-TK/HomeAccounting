@@ -41,6 +41,7 @@
         android:text="@string/mounth_text"
         android:textAllCaps="false"
         android:textColor="@color/colorStat"
+        android:onClick="PieChartMe"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,12 +61,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonYear"
+        android:id="@+id/buttonOutcome"
         android:layout_width="400dp"
         android:layout_height="70dp"
-        android:text="@string/year_text"
+        android:text="@string/History_Outcome_text"
         android:textAllCaps="false"
         android:textColor="@color/colorStat"
+        android:onClick="OutcomeHistoryMe"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,14 +76,15 @@
         android:id="@+id/buttonAll"
         android:layout_width="400dp"
         android:layout_height="70dp"
-        android:text="@string/allTime_text"
+        android:text="@string/income_text"
         android:textAllCaps="false"
         android:textColor="@color/colorStat"
+        android:onClick="HistoryMe"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonYear"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOutcome"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

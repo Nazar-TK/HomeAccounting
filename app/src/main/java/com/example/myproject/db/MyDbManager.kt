@@ -99,17 +99,41 @@ class MyDbManager private constructor(context: Context) {
 
 
 
-    fun readDbData(tableName: String, dateAfter:String, dateBefore:String ): ArrayList<String> {
+    fun calendarData(tableName: String, dateAfter:String, dateBefore:String, id: String ): Double  {  //ArrayList<String>
 
         val dataList = ArrayList<String>()
         val db = myDbHelper.readableDatabase
-        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE_NAME + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE_NAME + "<='" + dateBefore + "'"
+        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE_NAME + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE_NAME + "<='" + dateBefore + "'"+ " AND " + DataBase.COLUMN_OUTCOME_CATEGORY_ID + "=" + id
         val cursor = db.rawQuery(selectQuery, null)
         while (cursor?.moveToNext()!!) {
             dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
         }
         cursor?.close()
-        return dataList
+        var sum =0.0
+        for (item in dataList) {
+            sum += item.toFloat()
+        }
+
+        return sum
+    }
+
+    //ГАВНОФУНКЦІЯ, ЗАХАРДКОДИВ ПО ПРІКОЛУ
+    fun readDbData1(tableName: String, dateAfter:String, dateBefore:String ): Double  {
+
+        val dataList = ArrayList<String>()
+        val db = myDbHelper.readableDatabase
+        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE_NAME + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE_NAME + "<='" + dateBefore + "'"
+        val cursor = db.rawQuery(selectQuery, null)
+        while (cursor?.moveToNext()!!) {
+            dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
+        }
+        cursor?.close()
+        var sum =0.0
+        for (item in dataList) {
+            sum += item.toFloat()
+        }
+
+        return sum
     }
 
     fun readColumn(tableName: String, columnName: String): ArrayList<String> {

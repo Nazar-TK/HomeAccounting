@@ -26,48 +26,86 @@ class pieChartActivity : AppCompatActivity() {
         startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = "%02d/%02d/%d".format(dayOfMonth,month+1,year)})
         endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = "%02d/%02d/%d".format(dayOfMonth,month+1,year)})
 
+        chart.setPieChart(pieChart)     //output piechart
+        chart.showLegend(legendLayout)  //output legend
+
     }
 
 
     fun updateChart(view: View) {
-        val smt = myDbManager.readDbData(DataBase.TABLE_OUTCOME_NAME,startDate.text.toString(),endDate.text.toString())
-        sm.text=""
-        for (item in smt) {
-            sm.append(item + "\n")
-        }
-    }
 
+
+        summa.text = myDbManager.readDbData1(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString()).toString()
+
+        val pieChart = PieChart(
+            slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
+        ).build()
+        chart.setPieChart(pieChart)     //output piechart
+        chart.showLegend(legendLayout)  //output legend
+
+    }
 
     private fun provideSlices(): ArrayList<Slice> {        //builds slices for piechart
 
         return arrayListOf(
             Slice(
-                myDbManager.getCategorySum("1", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"1").toFloat(),
                 R.color.BackgroundCredits,
                 "Кредити"
             ),
             Slice(
-                myDbManager.getCategorySum("2", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"2").toFloat(),
                 R.color.BackgroundFood,
                 "Харчування"
             ),
             Slice(
-                myDbManager.getCategorySum("3", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"3").toFloat(),
                 R.color.BackgroundEntertainment,
                 "Розваги"
             ),
             Slice(
-                myDbManager.getCategorySum("4", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"4").toFloat(),
                 R.color.BackgroundTransport,
                 "Транспорт"
             ),
             Slice(
-                myDbManager.getCategorySum("5", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"5").toFloat(),
                 R.color.BackgroundUtilities,
                 "Комунальні послуги"
             )
         )
     }
+
+//    private fun provideSlices(): ArrayList<Slice> {        //builds slices for piechart
+//
+//        return arrayListOf(
+//            Slice(
+//                myDbManager.getCategorySum("1", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+//                R.color.BackgroundCredits,
+//                "Кредити"
+//            ),
+//            Slice(
+//                myDbManager.getCategorySum("2", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+//                R.color.BackgroundFood,
+//                "Харчування"
+//            ),
+//            Slice(
+//                myDbManager.getCategorySum("3", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+//                R.color.BackgroundEntertainment,
+//                "Розваги"
+//            ),
+//            Slice(
+//                myDbManager.getCategorySum("4", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+//                R.color.BackgroundTransport,
+//                "Транспорт"
+//            ),
+//            Slice(
+//                myDbManager.getCategorySum("5", DataBase.COLUMN_OUTCOME_VALUE, DataBase.TABLE_OUTCOME_NAME).toFloat(),
+//                R.color.BackgroundUtilities,
+//                "Комунальні послуги"
+//            )
+//        )
+//    }
 
 
 

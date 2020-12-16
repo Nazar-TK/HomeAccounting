@@ -21,6 +21,11 @@ fun getCurrentDateTime(): Date {
 
 class CostChoseActivity : AppCompatActivity() {
     private var currentChose = 1
+    private val arrOfColors = arrayOf(R.color.BackgroundCredits, R.color.BackgroundFood,
+        R.color.BackgroundEntertainment, R.color.BackgroundTransport, R.color.BackgroundUtilities)
+
+    private val arrOfImages = arrayOf(R.drawable.credyt, R.drawable.dishes,
+        R.drawable.activities, R.drawable.transport, R.drawable.utiltties)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +41,8 @@ class CostChoseActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 currentChose = position + 1
+                changeColor()
+                changeImage()
             }
         }
     }
@@ -52,11 +59,21 @@ class CostChoseActivity : AppCompatActivity() {
         )
     }
 
+    private fun changeImage(){
+        imageView.setImageResource(arrOfImages[currentChose - 1])
+    }
+
+    private fun changeColor(){
+        layout.setBackgroundResource(arrOfColors[currentChose - 1])
+    }
+
+
     fun safeSaveOutcome(view: View){
 
         if(editText.text.isNotEmpty()) {
             saveOutcome(currentChose, editText.text.toString())
             editText.text.clear()
+
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }
         else

@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC107"
+    android:background="@color/BackgroundCredits"
+    android:id="@+id/layout"
     tools:context=".CostChoseActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="259dp"
-        android:layout_height="240dp"
+        android:layout_width="266dp"
+        android:layout_height="275dp"
         android:layout_marginTop="68dp"
-        android:src="@drawable/money"
+        android:src="@drawable/credyt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +49,7 @@
         android:layout_height="74dp"
         android:onClick="safeSaveOutcome"
         android:text="Додати"
+        android:background="@color/semiGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

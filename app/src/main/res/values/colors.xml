@@ -10,10 +10,10 @@
     <color name="screenBackground3">#26CC49</color>
 
     //new color
-    <color name="BackgroundBlackThem">#0B173B</color>
+    <color name="BackgroundBlackThem">#0A1349</color>
     <color name="BackgroundCredits">#EB14E0</color>
-    <color name="BackgroundFood">#F13426</color>
-    <color name="BackgroundEntertainment">#9C27B0</color>
+    <color name="BackgroundFood">#F7301F</color>
+    <color name="BackgroundEntertainment">#57036B</color>
     <color name="BackgroundTransport">#1FB825</color>
-    <color name="BackgroundUtilities">#009688</color>
+    <color name="BackgroundUtilities">#02863F</color>
 </resources>

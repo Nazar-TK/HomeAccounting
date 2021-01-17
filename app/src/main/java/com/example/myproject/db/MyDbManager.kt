@@ -4,8 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
-import java.sql.Date
-import java.text.SimpleDateFormat
 
 class MyDbManager private constructor(context: Context) {
 
@@ -98,20 +96,44 @@ class MyDbManager private constructor(context: Context) {
         return userInfo
     }
 
-    fun readDbData(tableName: String): ArrayList<String> {
+
+
+
+    fun calendarData(tableName: String, dateAfter:String, dateBefore:String, id: String ): Double  {  //ArrayList<String>
 
         val dataList = ArrayList<String>()
-        val columns:Array<String> = DataBase.mapTableColumns.getValue(tableName)
-
-        for (column in columns) {
-            val cursor = db?.query(tableName, null, null, null, null, null, null)
-            while (cursor?.moveToNext()!!) {
-                dataList.add(cursor.getString(cursor.getColumnIndex(column)).toString())
-            }
-            cursor?.close()
+        val db = myDbHelper.readableDatabase
+        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE_NAME + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE_NAME + "<='" + dateBefore + "'"+ " AND " + DataBase.COLUMN_OUTCOME_CATEGORY_ID + "=" + id
+        val cursor = db.rawQuery(selectQuery, null)
+        while (cursor?.moveToNext()!!) {
+            dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
+        }
+        cursor?.close()
+        var sum =0.0
+        for (item in dataList) {
+            sum += item.toFloat()
         }
 
-        return dataList
+        return sum
+    }
+
+    //ГАВНОФУНКЦІЯ, ЗАХАРДКОДИВ ПО ПРІКОЛУ
+    fun readDbData1(tableName: String, dateAfter:String, dateBefore:String ): Double  {
+
+        val dataList = ArrayList<String>()
+        val db = myDbHelper.readableDatabase
+        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE_NAME + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE_NAME + "<='" + dateBefore + "'"
+        val cursor = db.rawQuery(selectQuery, null)
+        while (cursor?.moveToNext()!!) {
+            dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
+        }
+        cursor?.close()
+        var sum =0.0
+        for (item in dataList) {
+            sum += item.toFloat()
+        }
+
+        return sum
     }
 
     fun readColumn(tableName: String, columnName: String): ArrayList<String> {

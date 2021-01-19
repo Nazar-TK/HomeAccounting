@@ -10,6 +10,7 @@ class IncomeHistory : AppCompatActivity() {
 
     val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_history)
     }
@@ -31,7 +32,7 @@ class IncomeHistory : AppCompatActivity() {
 
         List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)
         for (item in List) {
-            historyIncomeData.append(item + "\n" + "\n")
+            historyIncomeData.append(item + "\n")
             sum += item.toFloat()
         }
 

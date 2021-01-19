@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity()
 {
     val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         myDbManager.openDb()
         setContentView(R.layout.activity_main)

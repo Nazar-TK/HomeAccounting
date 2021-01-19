@@ -28,6 +28,7 @@ class CostChoseActivity : AppCompatActivity() {
         R.drawable.activities, R.drawable.transport, R.drawable.utiltties)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cost_chose)
 

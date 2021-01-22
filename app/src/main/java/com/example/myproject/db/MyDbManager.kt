@@ -26,78 +26,63 @@ class MyDbManager private constructor(context: Context) {
         db = myDbHelper.writableDatabase
     }
 
-    fun getCategorySum(idCat: String, columnName: String, tableName: String): Int
-    {
-        val categoryList = readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_ID)
-        var sum = 0
-        for (id in categoryList) {
-            if(id == idCat)
-                sum += getBySmth(idCat, columnName, tableName, DataBase.COLUMN_OUTCOME_CATEGORY_ID).toInt()
-        }
-        return sum
+    fun closeDb(){
+        myDbHelper.close()
     }
+
 
     fun insertToDb(data: ArrayList<String>, tableName: String) {
 
         val columns:Array<String> = DataBase.mapTableColumns.getValue(tableName)
-        var i = 0
 
         val values = ContentValues().apply {
-            for (column in columns) {
+            for ((i, column) in columns.withIndex()) {
                 put(column, data[i])
-                i++
             }
         }
 
         db?.insert(tableName, null, values)
     }
 
-    fun getByID(id: String, columnName: String, tableName: String): String {
+    fun tableOpenInformation(tableName: String, columns:Array<String> = arrayOf("*"), groupBy:String = "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}" ): ArrayList<ArrayList<String>> {
+        var sql = ""
 
-        var userInfo  =  ""
-        val db = myDbHelper.readableDatabase
-        val  selectQuery = "SELECT " +  columnName  + " FROM " + tableName + " WHERE " + BaseColumns._ID +" = " + id
-        val cursor = db.rawQuery(selectQuery, null)
-        try {
-            if (cursor.getCount() != 0) {
-                cursor.moveToFirst()
-                if (cursor.getCount() > 0) {
-                    do {
-                        userInfo = cursor.getString(cursor.getColumnIndex(columnName))
-
-                    } while ((cursor.moveToNext()))
-                }
-            }
-        } finally {
-            cursor.close()
+        when(tableName){
+            DataBase.TABLE_OUTCOME_NAME -> sql = "SELECT ${columns.joinToString()} FROM ${DataBase.TABLE_OUTCOME_NAME} LEFT OUTER JOIN " +
+                    "${DataBase.TABLE_OUTCOME_CATEGORY_NAME} ON ${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_ID}=${DataBase.TABLE_OUTCOME_CATEGORY_NAME}._id " +
+                    "ORDER BY $groupBy"
+            DataBase.TABLE_INCOME_NAME -> sql = "SELECT ${columns.joinToString()} FROM ${DataBase.TABLE_INCOME_NAME} LEFT OUTER JOIN " +
+                    "${DataBase.TABLE_INCOME_CATEGORY_NAME} ON ${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_INCOME_CATEGORY_ID}=${DataBase.TABLE_INCOME_CATEGORY_NAME}._id " +
+                    "ORDER BY $groupBy"
         }
-        return userInfo
+
+        val cursor = db?.rawQuery(sql, null)
+        val dataList = ArrayList<ArrayList<String>>()
+
+        cursor?.use {
+            while (it.moveToNext()) {
+                val tmpDataList = ArrayList<String>()
+                var i = 0
+                while (i < it.columnCount) {
+                    tmpDataList.add(it.getString(i))
+                    ++i
+                }
+                dataList.add(tmpDataList)
+            }
+        }
+        return dataList
     }
 
-    private fun getBySmth(id: String, columnName: String, tableName: String, smth:String): String {
-
-        var userInfo  =  ""
-        val db = myDbHelper.readableDatabase
-        val  selectQuery = "SELECT " +  columnName  + " FROM " + tableName + " WHERE " + smth +" = " + id
-        val cursor = db.rawQuery(selectQuery, null)
-        try {
-            if (cursor.getCount() != 0) {
-                cursor.moveToFirst()
-                if (cursor.getCount() > 0) {
-                    do {
-                        userInfo = cursor.getString(cursor.getColumnIndex(columnName))
-
-                    } while ((cursor.moveToNext()))
-                }
-            }
-        } finally {
-            cursor.close()
+    fun getSumOfColumn(tableName: String, columnName: String): String{
+        val sql = "SELECT SUM($columnName) FROM $tableName"
+        val cursor = db?.rawQuery(sql, null)
+        var res = ""
+        cursor?.use {
+            it.moveToFirst()
+            res = it.getString(1)
         }
-        return userInfo
+        return res
     }
-
-
-
 
     fun calendarData(tableName: String, dateAfter:String, dateBefore:String, id: String ): Double  {  //ArrayList<String>
 
@@ -108,7 +93,7 @@ class MyDbManager private constructor(context: Context) {
         while (cursor?.moveToNext()!!) {
             dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
         }
-        cursor?.close()
+        cursor.close()
         var sum =0.0
         for (item in dataList) {
             sum += item.toFloat()
@@ -127,7 +112,7 @@ class MyDbManager private constructor(context: Context) {
         while (cursor?.moveToNext()!!) {
             dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
         }
-        cursor?.close()
+        cursor.close()
         var sum =0.0
         for (item in dataList) {
             sum += item.toFloat()
@@ -144,11 +129,9 @@ class MyDbManager private constructor(context: Context) {
         while (cursor?.moveToNext()!!) {
             dataList.add(cursor.getString(cursor.getColumnIndex(columnName)).toString())
         }
-        cursor?.close()
+        cursor.close()
         return dataList
     }
 
-    fun closeDb(){
-        myDbHelper.close()
-    }
+
 }

@@ -22,8 +22,8 @@ object DataBase : BaseColumns{
     const val COLUMN_OUTCOME_VALUE = "outcome_value"
     const val COLUMN_INCOME_CATEGORY_NAME = "income_category_name"
     const val COLUMN_OUTCOME_CATEGORY_NAME = "outcome_category_name"
-    const val COLUMN_INCOME_DATE_NAME = "income_data_name"
-    const val COLUMN_OUTCOME_DATE_NAME = "outcome_data_name"
+    const val COLUMN_INCOME_DATE_NAME = "income_date_name"
+    const val COLUMN_OUTCOME_DATE_NAME = "outcome_date_name"
 
     // Table Create Statements
     const val CREATE_INCOME_TABLE = "CREATE TABLE IF NOT EXISTS $TABLE_INCOME_NAME (" +
@@ -49,7 +49,7 @@ object DataBase : BaseColumns{
 
     //Table categories
     val OutcomeCategories: Array<String> = arrayOf("кредити","харчування","розваги","транспорт","комунальні послуги")
-
+    val IncomeCategories: Array<String> = arrayOf("одноразовий дохід")
 
     // Table Delete Statements
     const val DELETE_TABLE_INCOME = "DROP TABLE IF EXISTS $TABLE_INCOME_NAME"

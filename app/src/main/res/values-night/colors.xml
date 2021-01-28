@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="screenBackground">#2D313D</color>
+    <color name="BackgroundCosts">#B22222</color>
+    <color name="BackgroundIncome">#228B22</color>
+    <color name="BackgroundStat">#4B0082</color>
+    <color name="colorStat">#00574B</color>
+    <color name="TextWithBack">#C0C0C0</color>
+    <color name="TextWithoutBack">#C0C0C0</color>
+    <color name="darkOrange">#FF6B00</color>
+    <color name="screenBackground3">#26CC49</color>
+
+    //new color #6C63FF
+    <color name="BackgroundBlackThem">#0A1349</color>
+    <color name="BackgroundCredits">#EB14E0</color>
+    <color name="BackgroundFood">#F7301F</color>
+    <color name="BackgroundEntertainment">#57036B</color>
+    <color name="BackgroundTransport">#1FB825</color>
+    <color name="BackgroundUtilities">#02863F</color>
+</resources>

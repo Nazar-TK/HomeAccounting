@@ -70,4 +70,9 @@ class MainActivity : AppCompatActivity()
         super.onDestroy()
         myDbManager.closeDb()
     }
+    fun settings (view: View){
+        val settingsIntent = Intent(this, SettingsActivity::class.java)
+        startActivity(settingsIntent)
+    }
+
 }

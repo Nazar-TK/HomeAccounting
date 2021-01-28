@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#02863F</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="screenBackground">#FFFFFF</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#F7301F</color>
+    <color name="screenBackground">#F0FFFF</color>
+    <color name="BackgroundCosts">#FFC107</color>
+    <color name="BackgroundIncome">#3FC744</color>
+    <color name="BackgroundStat">#006edb</color>
     <color name="colorStat">#00574B</color>
-    <color name="screenBackground2">#00574B</color>
+    <color name="TextWithBack">#F0F0F0</color>
+    <color name="TextWithoutBack">#242424</color>
     <color name="darkOrange">#FF6B00</color>
     <color name="screenBackground3">#26CC49</color>
 
     //new color
+    2196F3
     <color name="BackgroundBlackThem">#0A1349</color>
     <color name="BackgroundCredits">#EB14E0</color>
     <color name="BackgroundFood">#F7301F</color>

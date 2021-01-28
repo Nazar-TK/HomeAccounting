@@ -15,13 +15,18 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DataBase.DATABASE
         db?.execSQL(DataBase.CREATE_INCOME_CATEGORY_TABLE)
         db?.execSQL(DataBase.CREATE_OUTCOME_CATEGORY_TABLE)
 
-        var values = ContentValues()
-
         for (category in DataBase.OutcomeCategories) {
-            values = ContentValues().apply {
+            val values = ContentValues().apply {
                 put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME, category)
             }
             db?.insert(DataBase.TABLE_OUTCOME_CATEGORY_NAME, null, values)
+        }
+
+        for (category in DataBase.IncomeCategories) {
+            val values = ContentValues().apply {
+                put(DataBase.COLUMN_INCOME_CATEGORY_NAME, category)
+            }
+            db?.insert(DataBase.TABLE_INCOME_CATEGORY_NAME, null, values)
         }
     }
     

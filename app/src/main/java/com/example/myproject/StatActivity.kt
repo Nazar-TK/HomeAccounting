@@ -25,6 +25,11 @@ class StatActivity : AppCompatActivity() {
         val statIntent = Intent(this, pieChartActivity::class.java)
         startActivity(statIntent)
     }
+    fun backToMain(view: View)
+    {
+        val BackIntent = Intent(this, MainActivity::class.java)
+        startActivity(BackIntent)
+    }
 }
 
 

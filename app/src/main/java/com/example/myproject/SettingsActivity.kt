@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import kotlinx.android.synthetic.main.activity_cost_chose.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 
@@ -16,25 +15,26 @@ class SettingsActivity : AppCompatActivity() {
         val sharedPrefsEdit: SharedPreferences.Editor = appSettingsPrefs.edit()
         val isNightModeOn: Boolean = appSettingsPrefs.getBoolean("NightModeOn", false)
 
-//        if(isNightModeOn){
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//
-//        } else {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//
-//        }
+        if(isNightModeOn){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        }
         switchTheme.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                sharedPrefsEdit.putBoolean("NightMode", true)
+                sharedPrefsEdit.putBoolean("NightModeOn", true)
                 sharedPrefsEdit.apply()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                sharedPrefsEdit.putBoolean("NightMode", false)
+                sharedPrefsEdit.putBoolean("NightModeOn", false)
                 sharedPrefsEdit.apply()
             }
 
         }
+        switchTheme.setChecked(isNightModeOn)
     }
 
 }

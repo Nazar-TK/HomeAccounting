@@ -76,40 +76,32 @@ class MyDbManager private constructor(context: Context) {
         return res
     }
 
-    fun calendarData(tableName: String, dateAfter:String, dateBefore:String, id: String ): Double  {  //ArrayList<String>
-
-        val dataList = ArrayList<String>()
-        val db = myDbHelper.readableDatabase
-        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE + "<='" + dateBefore + "'"+ " AND " + DataBase.COLUMN_OUTCOME_CATEGORY_ID + "=" + id
-        val cursor = db.rawQuery(selectQuery, null)
-        while (cursor?.moveToNext()!!) {
-            dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
+    fun calendarData(tableName: String, dateAfter:String, dateBefore:String, outcome_category_id: Int): Float  {  //ArrayList<String>
+        var sum =0f
+        val selectQuery = "SELECT SUM(${DataBase.COLUMN_OUTCOME_VALUE}) FROM $tableName WHERE" +
+                " ${DataBase.COLUMN_OUTCOME_DATE} >= '$dateAfter' AND ${DataBase.COLUMN_OUTCOME_DATE}" +
+                " <= '$dateBefore' AND ${DataBase.COLUMN_OUTCOME_CATEGORY_ID} = $outcome_category_id"
+        val cursor = db?.rawQuery(selectQuery, null)
+        cursor?.use {
+            while (it.moveToNext()) {
+                sum = it.getFloat(1)
+            }
         }
-        cursor.close()
-        var sum =0.0
-        for (item in dataList) {
-            sum += item.toFloat()
-        }
-
         return sum
     }
 
     //ГАВНОФУНКЦІЯ, ЗАХАРДКОДИВ ПО ПРІКОЛУ
-    fun readDbData1(tableName: String, dateAfter:String, dateBefore:String ): Double  {
-
-        val dataList = ArrayList<String>()
-        val db = myDbHelper.readableDatabase
-        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE + "<='" + dateBefore + "'"
-        val cursor = db.rawQuery(selectQuery, null)
-        while (cursor?.moveToNext()!!) {
-            dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
+    fun sumOfAllOutcomesForPeriod(tableName: String, dateAfter:String, dateBefore:String): Float {
+        var sum =0f
+        val selectQuery = "SELECT SUM(${DataBase.COLUMN_OUTCOME_VALUE}) FROM $tableName WHERE" +
+                " ${DataBase.COLUMN_OUTCOME_DATE} >= '$dateAfter' AND ${DataBase.COLUMN_OUTCOME_DATE}" +
+                " <= '$dateBefore'"
+        val cursor = db?.rawQuery(selectQuery, null)
+        cursor?.use {
+            while (it.moveToNext()) {
+                sum = it.getFloat(1)
+            }
         }
-        cursor.close()
-        var sum =0.0
-        for (item in dataList) {
-            sum += item.toFloat()
-        }
-
         return sum
     }
 

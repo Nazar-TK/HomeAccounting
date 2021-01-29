@@ -19,9 +19,6 @@ class MainActivity : AppCompatActivity()
         myDbManager.openDb()
     }
 
-
-
-
     override fun onResume() {
         super.onResume()
         var sum = 0.0
@@ -53,23 +50,11 @@ class MainActivity : AppCompatActivity()
         startActivity(incomeIntent)
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-
-    override fun onRestart() {
-        super.onRestart()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         myDbManager.closeDb()
     }
+
     fun settings (view: View){
         val settingsIntent = Intent(this, SettingsActivity::class.java)
         startActivity(settingsIntent)

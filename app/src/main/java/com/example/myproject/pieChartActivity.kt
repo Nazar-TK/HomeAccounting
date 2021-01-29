@@ -19,7 +19,8 @@ class pieChartActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pie_chart)
-
+        startDate.text = "20/01/2021"
+        endDate.text = "30/01/2021"
         val pieChart = PieChart(
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
         ).build()
@@ -36,7 +37,7 @@ class pieChartActivity : AppCompatActivity() {
     fun updateChart(view: View) {
 
 
-        summa.text = myDbManager.readDbData1(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString()).toString()
+        summa.text = myDbManager.sumOfAllOutcomesForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString()).toString()
 
         val pieChart = PieChart(
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
@@ -50,27 +51,27 @@ class pieChartActivity : AppCompatActivity() {
 
         return arrayListOf(
             Slice(
-                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"1").toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),1),
                 R.color.BackgroundCredits,
                 "Кредити"
             ),
             Slice(
-                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"2").toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),2),
                 R.color.BackgroundFood,
                 "Харчування"
             ),
             Slice(
-                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"3").toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),3),
                 R.color.BackgroundEntertainment,
                 "Розваги"
             ),
             Slice(
-                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"4").toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),4),
                 R.color.BackgroundTransport,
                 "Транспорт"
             ),
             Slice(
-                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),"5").toFloat(),
+                myDbManager.calendarData(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),5),
                 R.color.BackgroundUtilities,
                 "Комунальні послуги"
             )

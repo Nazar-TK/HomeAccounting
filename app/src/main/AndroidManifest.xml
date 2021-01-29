@@ -9,18 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Calendar"></activity>
         <activity android:name=".pieChartActivity" />
         <activity android:name=".CostChoseActivity" />
         <activity android:name=".OutcomeHistory" />
         <activity android:name=".IncomeHistory" />
         <activity android:name=".IncomeActivity" />
         <activity android:name=".StatActivity" />
-        <activity android:name=".UtilitiesActivity" />
-        <activity android:name=".CreditsActivity" />
-        <activity android:name=".FunActivity" />
-        <activity android:name=".TransportActivity" />
-        <activity android:name=".FoodActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -15,8 +15,9 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-        myDbManager.openDb()
         setContentView(R.layout.activity_main)
+        myDbManager.openDb()
+    }
 
 
     }
@@ -50,5 +51,23 @@ class MainActivity : AppCompatActivity()
     fun incomeMe (view: View){
         val incomeIntent = Intent(this, IncomeActivity::class.java)
         startActivity(incomeIntent)
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+
+    override fun onRestart() {
+        super.onRestart()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        myDbManager.closeDb()
     }
 }

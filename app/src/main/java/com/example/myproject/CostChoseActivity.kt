@@ -3,6 +3,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
@@ -28,12 +29,12 @@ class CostChoseActivity : AppCompatActivity() {
         R.drawable.activities, R.drawable.transport, R.drawable.utiltties)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cost_chose)
 
-        spinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+        spinner.adapter = ArrayAdapter<String>(this, R.layout.style_spinner,
             MyDbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME))
-
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 

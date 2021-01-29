@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class StatActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stat)
     }
@@ -23,6 +24,11 @@ class StatActivity : AppCompatActivity() {
     fun PieChartMe (view: View){
         val statIntent = Intent(this, pieChartActivity::class.java)
         startActivity(statIntent)
+    }
+    fun backToMain(view: View)
+    {
+        val BackIntent = Intent(this, MainActivity::class.java)
+        startActivity(BackIntent)
     }
 }
 

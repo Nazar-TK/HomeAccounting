@@ -8,30 +8,16 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FBFDFD"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/hello_world_text"
-        android:textColor="#12AF29"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
-
     <Button
         android:id="@+id/costs_button"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:background="#FFC107"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:background="@color/BackgroundCosts"
         android:onClick="costMe"
         android:text="@string/costs_text"
-        android:textColor="#F7F5F5"
+        android:textColor="@color/TextWithBack"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/income_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,49 +29,83 @@
     <Button
         android:id="@+id/income_button"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:background="#3FC744"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1"
+        android:background="@color/BackgroundIncome"
         android:onClick="incomeMe"
         android:text="@string/income_text"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/TextWithBack"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/statistic_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintTop_toBottomOf="@+id/costs_button" />
+
 
     <Button
         android:id="@+id/statistic_button"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginBottom="172dp"
-        android:background="#2196F3"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:background="@color/BackgroundStat"
         android:onClick="StatMe"
         android:text="@string/statistic_text"
         android:textAlignment="center"
-        android:textColor="#FFFCFC"
+        android:textColor="@color/TextWithBack"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/balance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/income_button" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@color/screenBackground"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/hello_world_text"
+        android:textColor="@color/TextWithoutBack"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/balance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/balance"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/balance"
-        android:layout_width="143dp"
-        android:layout_height="67dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="148dp"
+
         android:layout_marginBottom="32dp"
+        android:background="@color/screenBackground"
         android:text="@string/balance_text"
-        android:textColor="#56C34A"
+        android:textColor="@color/TextWithoutBack"
         android:textSize="36sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/statistic_button"
-        app:layout_constraintVertical_bias="0.545" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/SettingsBt"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

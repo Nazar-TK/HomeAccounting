@@ -13,14 +13,14 @@ class MainActivity : AppCompatActivity()
 {
     val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         myDbManager.openDb()
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
+
+
 
     override fun onResume() {
         super.onResume()
@@ -70,4 +70,9 @@ class MainActivity : AppCompatActivity()
         super.onDestroy()
         myDbManager.closeDb()
     }
+    fun settings (view: View){
+        val settingsIntent = Intent(this, SettingsActivity::class.java)
+        startActivity(settingsIntent)
+    }
+
 }

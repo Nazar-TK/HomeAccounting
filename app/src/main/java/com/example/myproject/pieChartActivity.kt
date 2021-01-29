@@ -16,6 +16,7 @@ class pieChartActivity : AppCompatActivity() {
     var end=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pie_chart)
 
@@ -23,8 +24,8 @@ class pieChartActivity : AppCompatActivity() {
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
         ).build()
 
-        startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = "%02d/%02d/%d".format(dayOfMonth,month+1,year)})
-        endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = "%02d/%02d/%d".format(dayOfMonth,month+1,year)})
+        startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = "%d/%02d/%02d".format(year,month+1,dayOfMonth)})
+        endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = "%d/%02d/%02d".format(year,month+1,dayOfMonth)})
 
         chart.setPieChart(pieChart)     //output piechart
         chart.showLegend(legendLayout)  //output legend

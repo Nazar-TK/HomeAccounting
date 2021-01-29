@@ -10,6 +10,7 @@ class IncomeHistory : AppCompatActivity() {
     private val myDbManager = MyDbManager.getInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_history)
     }

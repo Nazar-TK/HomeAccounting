@@ -21,7 +21,6 @@ class OutcomeHistory : AppCompatActivity() {
 
     private fun fillFields() {
         var sum = 0.0
-        var i = 0
         val columns: Array<String> = arrayOf(
             "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}",
             "${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_DATE_NAME}",
@@ -32,11 +31,10 @@ class OutcomeHistory : AppCompatActivity() {
         val info: ArrayList<ArrayList<String>> =
             myDbManager.tableOpenInformation(DataBase.TABLE_OUTCOME_NAME, columns, groupBy)
 
-        while (i < info.size) {
+        for (i in info.indices) {
             categoryOutcome.append("${info[i][0]}\n\n")
             historyOutcomeDate.append("${info[i][1]}\n\n")
             historyOutcomeData.append("${info[i][2]}\n\n")
-            i++
         }
 
         val dataList =  myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_VALUE)

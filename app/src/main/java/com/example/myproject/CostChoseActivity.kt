@@ -80,4 +80,16 @@ class CostChoseActivity : AppCompatActivity() {
             Toast.makeText(this, "Спочатку введіть суму", Toast.LENGTH_LONG).show()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
 }

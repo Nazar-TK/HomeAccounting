@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_income_history.*
+import kotlinx.android.synthetic.main.activity_outcome_history.*
 
 class IncomeHistory : AppCompatActivity() {
     private val myDbManager = MyDbManager.getInstance(this)
@@ -21,7 +22,6 @@ class IncomeHistory : AppCompatActivity() {
 
     private fun fillFields(){
         var sum=0.0
-        var i = 0
 
         val columns: Array<String> = arrayOf(
             "${DataBase.TABLE_INCOME_CATEGORY_NAME}.${DataBase.COLUMN_INCOME_CATEGORY_NAME}",
@@ -33,11 +33,10 @@ class IncomeHistory : AppCompatActivity() {
         val info: ArrayList<ArrayList<String>> =
             myDbManager.tableOpenInformation(DataBase.TABLE_INCOME_NAME, columns, groupBy)
 
-        while (i < info.size) {
+        for (i in info.indices) {
             categoryIncome.append("${info[i][0]}\n\n")
             historyIncomeDate.append("${info[i][1]}\n\n")
             historyIncomeData.append("${info[i][2]}\n\n")
-            i++
         }
 
         val incomeValueList = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)

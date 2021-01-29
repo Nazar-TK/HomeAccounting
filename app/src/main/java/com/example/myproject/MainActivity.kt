@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity()
         myDbManager.openDb()
     }
 
-
+    override fun onStart() {
+        super.onStart()
     }
 
     override fun onResume() {

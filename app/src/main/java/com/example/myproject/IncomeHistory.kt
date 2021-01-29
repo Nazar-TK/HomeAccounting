@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.MyDbManager
 import kotlinx.android.synthetic.main.activity_income_history.*
-import kotlinx.android.synthetic.main.activity_outcome_history.*
+
 
 class IncomeHistory : AppCompatActivity() {
     private val myDbManager = MyDbManager.getInstance(this)
@@ -25,7 +25,7 @@ class IncomeHistory : AppCompatActivity() {
 
         val columns: Array<String> = arrayOf(
             "${DataBase.TABLE_INCOME_CATEGORY_NAME}.${DataBase.COLUMN_INCOME_CATEGORY_NAME}",
-            "${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_INCOME_DATE_NAME}",
+            "${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_INCOME_DATE}",
             "${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_INCOME_VALUE}"
         )
         val groupBy =

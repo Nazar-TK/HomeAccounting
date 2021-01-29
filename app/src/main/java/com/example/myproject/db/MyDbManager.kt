@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
+import com.example.myproject.MoneyEvent
 
 class MyDbManager private constructor(context: Context) {
 
@@ -31,17 +32,8 @@ class MyDbManager private constructor(context: Context) {
     }
 
 
-    fun insertToDb(data: ArrayList<String>, tableName: String) {
-
-        val columns:Array<String> = DataBase.mapTableColumns.getValue(tableName)
-
-        val values = ContentValues().apply {
-            for ((i, column) in columns.withIndex()) {
-                put(column, data[i])
-            }
-        }
-
-        db?.insert(tableName, null, values)
+    fun insertToDb(moneyEvent: MoneyEvent, tableName: String) {
+        db?.insert(tableName, null, moneyEvent.toContentValues())
     }
 
     fun tableOpenInformation(tableName: String, columns:Array<String> = arrayOf("*"), groupBy:String = "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}" ): ArrayList<ArrayList<String>> {
@@ -73,13 +65,13 @@ class MyDbManager private constructor(context: Context) {
         return dataList
     }
 
-    fun getSumOfColumn(tableName: String, columnName: String): String{
+    fun getSumOfColumn(tableName: String, columnName: String): Float{
         val sql = "SELECT SUM($columnName) FROM $tableName"
         val cursor = db?.rawQuery(sql, null)
-        var res = ""
+        var res = 0f
         cursor?.use {
             it.moveToFirst()
-            res = it.getString(1)
+            res = it.getFloat(1)
         }
         return res
     }
@@ -88,7 +80,7 @@ class MyDbManager private constructor(context: Context) {
 
         val dataList = ArrayList<String>()
         val db = myDbHelper.readableDatabase
-        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE_NAME + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE_NAME + "<='" + dateBefore + "'"+ " AND " + DataBase.COLUMN_OUTCOME_CATEGORY_ID + "=" + id
+        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE + "<='" + dateBefore + "'"+ " AND " + DataBase.COLUMN_OUTCOME_CATEGORY_ID + "=" + id
         val cursor = db.rawQuery(selectQuery, null)
         while (cursor?.moveToNext()!!) {
             dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
@@ -107,7 +99,7 @@ class MyDbManager private constructor(context: Context) {
 
         val dataList = ArrayList<String>()
         val db = myDbHelper.readableDatabase
-        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE_NAME + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE_NAME + "<='" + dateBefore + "'"
+        val selectQuery = "SELECT "+ DataBase.COLUMN_OUTCOME_VALUE  +" FROM " + tableName + " WHERE " + DataBase.COLUMN_OUTCOME_DATE + ">='" + dateAfter + "' AND " + DataBase.COLUMN_OUTCOME_DATE + "<='" + dateBefore + "'"
         val cursor = db.rawQuery(selectQuery, null)
         while (cursor?.moveToNext()!!) {
             dataList.add(cursor.getString(cursor.getColumnIndex(DataBase.COLUMN_OUTCOME_VALUE)).toString())
@@ -122,14 +114,13 @@ class MyDbManager private constructor(context: Context) {
     }
 
     fun readColumn(tableName: String, columnName: String): ArrayList<String> {
-
         val dataList = ArrayList<String>()
-
         val cursor = db?.query(tableName,null, null, null, null, null, null)
-        while (cursor?.moveToNext()!!) {
-            dataList.add(cursor.getString(cursor.getColumnIndex(columnName)).toString())
+        cursor?.use {
+            while (it.moveToNext()) {
+                dataList.add(it.getString(it.getColumnIndex(columnName)))
+            }
         }
-        cursor.close()
         return dataList
     }
 

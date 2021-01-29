@@ -16,32 +16,29 @@ class IncomeActivity : AppCompatActivity() {
         val formatter = SimpleDateFormat(format, locale)
         return formatter.format(this)
     }
+
     fun getCurrentDateTime(): Date {
         return Calendar.getInstance().time
     }
 
-    val myDbManager = MyDbManager.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income)
     }
-    override fun onResume() {
 
-        super.onResume()
-        myDbManager.openDb()
-
+    private fun saveIncome(category_id: Int, sum: Int) {
+        val myDbManager = MyDbManager.getInstance(this)
+        val incomeEvent = IncomeEvent(category_id, sum, getCurrentDateTime().toString("dd/MM/yyyy"))
+        myDbManager.insertToDb(incomeEvent, DataBase.TABLE_INCOME_NAME)
     }
-    fun saveIncome(view: View) {
+
+    fun safeSaveIncome(view: View){
         if(incomeField.text.isNotEmpty()) {
-            myDbManager.insertToDb(arrayListOf("1", incomeField.text.toString(),  getCurrentDateTime().toString("dd/MM/yyyy")), DataBase.TABLE_INCOME_NAME)
+            saveIncome(1, incomeField.text.toString().toInt())
             incomeField.text.clear()
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }
         else
             Toast.makeText(this, "Спочатку введіть суму", Toast.LENGTH_LONG).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 }

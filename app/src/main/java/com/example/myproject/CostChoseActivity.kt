@@ -47,16 +47,10 @@ class CostChoseActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveOutcome(idOfCategory: Int, sum: String){
-
-        MyDbManager.getInstance(this).insertToDb(
-            arrayListOf(
-                idOfCategory.toString(),
-                sum,
-                getCurrentDateTime().toString("dd/MM/yyyy")
-            ),
-            DataBase.TABLE_OUTCOME_NAME
-        )
+    private fun saveOutcome(idOfCategory: Int, sum: Int){
+        val dbManager = MyDbManager.getInstance(this)
+        val outcomeEvent = OutcomeEvent(idOfCategory, sum, getCurrentDateTime().toString("dd/MM/yyyy"))
+        dbManager.insertToDb(outcomeEvent, DataBase.TABLE_OUTCOME_NAME)
     }
 
     private fun changeImage(){
@@ -67,29 +61,15 @@ class CostChoseActivity : AppCompatActivity() {
         layout.setBackgroundResource(arrOfColors[currentChose - 1])
     }
 
-
     fun safeSaveOutcome(view: View){
 
         if(editText.text.isNotEmpty()) {
-            saveOutcome(currentChose, editText.text.toString())
+            saveOutcome(currentChose, editText.text.toString().toInt())
             editText.text.clear()
-
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }
         else
             Toast.makeText(this, "Спочатку введіть суму", Toast.LENGTH_LONG).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
     }
 
 }

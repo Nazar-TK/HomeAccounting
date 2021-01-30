@@ -1,36 +1,33 @@
 package com.example.myproject.db
 
-import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.provider.BaseColumns
 import com.example.myproject.MoneyEvent
 
-class MyDbManager private constructor(context: Context) {
+class DbManager private constructor(context: Context) {
 
     companion object {
-        var dbmanager: MyDbManager? = null
-        fun getInstance(context: Context): MyDbManager{
+        var dbmanager: DbManager? = null
+        fun getInstance(context: Context): DbManager{
             dbmanager?.let{
                 return it
             }
-            val instance = MyDbManager(context)
+            val instance = DbManager(context)
             dbmanager = instance
             return instance
         }
     }
 
-    private val myDbHelper = MyDbHelper(context)
+    private val dbHelper = DbHelper(context)
     var db: SQLiteDatabase? = null
 
     fun openDb() {
-        db = myDbHelper.writableDatabase
+        db = dbHelper.writableDatabase
     }
 
     fun closeDb(){
-        myDbHelper.close()
+        dbHelper.close()
     }
-
 
     fun insertToDb(moneyEvent: MoneyEvent, tableName: String) {
         db?.insert(tableName, null, moneyEvent.toContentValues())
@@ -76,30 +73,35 @@ class MyDbManager private constructor(context: Context) {
         return res
     }
 
-    fun calendarData(tableName: String, dateAfter:String, dateBefore:String, outcome_category_id: Int): Float  {  //ArrayList<String>
+    fun sumForPeriod(tableName: String, dateAfter:String, dateBefore:String, category_id: Int?): Float {
         var sum =0f
-        val selectQuery = "SELECT SUM(${DataBase.COLUMN_OUTCOME_VALUE}) FROM $tableName WHERE" +
-                " ${DataBase.COLUMN_OUTCOME_DATE} >= '$dateAfter' AND ${DataBase.COLUMN_OUTCOME_DATE}" +
-                " <= '$dateBefore' AND ${DataBase.COLUMN_OUTCOME_CATEGORY_ID} = $outcome_category_id"
-        val cursor = db?.rawQuery(selectQuery, null)
-        cursor?.use {
-            while (it.moveToNext()) {
-                sum = it.getFloat(1)
+        var columnNameValue = ""
+        var columnNameDate = ""
+        var columnNameCategoryId = ""
+
+        when(tableName){
+            DataBase.TABLE_OUTCOME_NAME -> {
+                columnNameValue = DataBase.COLUMN_OUTCOME_VALUE
+                columnNameDate = DataBase.COLUMN_OUTCOME_DATE
+                columnNameCategoryId = DataBase.COLUMN_OUTCOME_CATEGORY_ID
+            }
+            DataBase.TABLE_INCOME_NAME -> {
+                columnNameValue = DataBase.COLUMN_INCOME_VALUE
+                columnNameDate = DataBase.COLUMN_INCOME_DATE
+                columnNameCategoryId = DataBase.COLUMN_INCOME_CATEGORY_ID
             }
         }
-        return sum
-    }
-
-    //ГАВНОФУНКЦІЯ, ЗАХАРДКОДИВ ПО ПРІКОЛУ
-    fun sumOfAllOutcomesForPeriod(tableName: String, dateAfter:String, dateBefore:String): Float {
-        var sum =0f
-        val selectQuery = "SELECT SUM(${DataBase.COLUMN_OUTCOME_VALUE}) FROM $tableName WHERE" +
-                " ${DataBase.COLUMN_OUTCOME_DATE} >= '$dateAfter' AND ${DataBase.COLUMN_OUTCOME_DATE}" +
+        var sql = "SELECT SUM($columnNameValue) FROM $tableName WHERE" +
+                " $columnNameDate >= '$dateAfter' AND $columnNameDate" +
                 " <= '$dateBefore'"
-        val cursor = db?.rawQuery(selectQuery, null)
+        if (category_id != null){
+            sql +=  "AND $columnNameCategoryId = $category_id"
+        }
+        
+        val cursor = db?.rawQuery(sql, null)
         cursor?.use {
             while (it.moveToNext()) {
-                sum = it.getFloat(1)
+                sum = it.getFloat(0)
             }
         }
         return sum
@@ -115,6 +117,4 @@ class MyDbManager private constructor(context: Context) {
         }
         return dataList
     }
-
-
 }

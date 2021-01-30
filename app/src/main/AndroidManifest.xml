@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".Calendar" />
-        <activity android:name=".pieChartActivity" />
+        <activity android:name=".PieChartActivity" />
         <activity android:name=".CostChoseActivity" />
         <activity android:name=".OutcomeHistory" />
         <activity android:name=".IncomeHistory" />

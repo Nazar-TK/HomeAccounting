@@ -3,12 +3,12 @@ package com.example.myproject
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
-import com.example.myproject.db.MyDbManager
+import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_outcome_history.*
 
 
 class OutcomeHistory : AppCompatActivity() {
-    private val myDbManager = MyDbManager.getInstance(this)
+    private val myDbManager = DbManager.getInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()

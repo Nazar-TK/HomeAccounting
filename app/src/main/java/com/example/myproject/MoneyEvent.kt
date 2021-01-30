@@ -12,7 +12,7 @@ abstract class MoneyEvent() {
 
 }
 
-class IncomeEvent(private val category_id: Int, private val value: Int, private val date: String) : MoneyEvent(){
+class IncomeEvent(private val category_id: Int, private val value: Float, private val date: String) : MoneyEvent(){
     override fun toContentValues() : ContentValues{
         return ContentValues().apply{
             put(DataBase.COLUMN_INCOME_CATEGORY_ID, category_id)
@@ -22,7 +22,7 @@ class IncomeEvent(private val category_id: Int, private val value: Int, private 
     }
 }
 
-class OutcomeEvent(private val category_id: Int, private val value: Int, private val date: String) : MoneyEvent(){
+class OutcomeEvent(private val category_id: Int, private val value: Float, private val date: String) : MoneyEvent(){
     override fun toContentValues() : ContentValues{
         return ContentValues().apply{
             put(DataBase.COLUMN_OUTCOME_CATEGORY_ID, category_id)

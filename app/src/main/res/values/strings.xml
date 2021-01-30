@@ -4,7 +4,7 @@
     <string name="costs_text">Витрати -</string>
     <string name="income_text">Доходи  +</string>
     <string name="statistic_text">Статистика ></string>
-    <string name="balance_text">25 247</string>
+    <string name="balance_text">0</string>
     <string name="credits_text">Кредити</string>
     <string name="mandatory_payments_text">Обов\'язкові платежі</string>
     <string name="transport_text">Транспорт</string>

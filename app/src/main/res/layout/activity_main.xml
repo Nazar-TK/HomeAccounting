@@ -52,7 +52,7 @@
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@color/BackgroundStat"
-        android:onClick="StatMe"
+        android:onClick="statMe"
         android:text="@string/statistic_text"
         android:textAlignment="center"
         android:textColor="@color/TextWithBack"

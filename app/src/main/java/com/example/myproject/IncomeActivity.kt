@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
-import com.example.myproject.db.MyDbManager
+import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_income.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,15 +27,16 @@ class IncomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_income)
     }
 
-    private fun saveIncome(category_id: Int, sum: Int) {
-        val myDbManager = MyDbManager.getInstance(this)
+    private fun saveIncome(category_id: Int, sum: Float) {
+        val myDbManager = DbManager.getInstance(this)
         val incomeEvent = IncomeEvent(category_id, sum, getCurrentDateTime().toString("dd/MM/yyyy"))
         myDbManager.insertToDb(incomeEvent, DataBase.TABLE_INCOME_NAME)
+        currentBalance += sum
     }
 
     fun safeSaveIncome(view: View){
         if(incomeField.text.isNotEmpty()) {
-            saveIncome(1, incomeField.text.toString().toInt())
+            saveIncome(1, incomeField.text.toString().toFloat())
             incomeField.text.clear()
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }

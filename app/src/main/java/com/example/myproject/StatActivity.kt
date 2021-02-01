@@ -22,7 +22,7 @@ class StatActivity : AppCompatActivity() {
         startActivity(HistoryOutcome)
     }
     fun PieChartMe (view: View){
-        val statIntent = Intent(this, pieChartActivity::class.java)
+        val statIntent = Intent(this, PieChartActivity::class.java)
         startActivity(statIntent)
     }
     fun backToMain(view: View)

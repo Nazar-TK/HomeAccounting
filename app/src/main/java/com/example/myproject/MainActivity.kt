@@ -1,75 +1,55 @@
 package com.example.myproject
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myproject.db.DataBase
-import com.example.myproject.db.MyDbManager
+import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_main.*
 
+var currentBalance = 0f
 
 class MainActivity : AppCompatActivity()
 {
-    val myDbManager = MyDbManager.getInstance(this)
+    private val dbManager = DbManager.getInstance(this)
+    private lateinit var pref:SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        myDbManager.openDb()
+        pref = getSharedPreferences("SharedPreferences4currentBalance", MODE_PRIVATE)
+        currentBalance = pref.getFloat("current_balance", 0f)
+        dbManager.openDb()
     }
-
-
-  
 
     override fun onResume() {
         super.onResume()
-        var sum = 0.0
-
-        val List = myDbManager.readColumn(DataBase.TABLE_INCOME_NAME, DataBase.COLUMN_INCOME_VALUE)
-        for (item in List) {
-            sum += item.toFloat()
-        }
-
-        val dataList = myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_VALUE)
-        for (item in dataList) {
-            sum -= item.toFloat()
-        }
-
-        balance.text = sum.toString()
+        pref.edit().putFloat("current_balance", currentBalance).apply()
+        balance.text = currentBalance.toString()
     }
 
     fun costMe (view: View){
         val costsIntent = Intent(this, CostChoseActivity::class.java)
         startActivity(costsIntent)
-
     }
-    fun StatMe (view: View){
+    
+    fun statMe (view: View){
         val statIntent = Intent(this, StatActivity::class.java)
         startActivity(statIntent)
     }
+    
     fun incomeMe (view: View){
         val incomeIntent = Intent(this, IncomeActivity::class.java)
         startActivity(incomeIntent)
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-
-    override fun onRestart() {
-        super.onRestart()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
-        myDbManager.closeDb()
+        dbManager.closeDb()
     }
+
     fun settings (view: View){
         val settingsIntent = Intent(this, SettingsActivity::class.java)
         startActivity(settingsIntent)

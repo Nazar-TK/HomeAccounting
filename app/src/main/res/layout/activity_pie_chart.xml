@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/screenBackground"
     android:orientation="vertical"
-    tools:context=".pieChartActivity">
+    tools:context=".PieChartActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"

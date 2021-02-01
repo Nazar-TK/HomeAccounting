@@ -57,7 +57,7 @@ class CostChoseActivity : AppCompatActivity() {
 
     private fun saveOutcome(idOfCategory: Int, sum: Float){
         val dbManager = DbManager.getInstance(this)
-        val outcomeEvent = OutcomeEvent(idOfCategory, sum, getCurrentDateTime().toString("dd/MM/yyyy"))
+        val outcomeEvent = OutcomeEvent(idOfCategory, sum, getCurrentDateTime().toString("yyyy/MM/dd"))
         dbManager.insertToDb(outcomeEvent, DataBase.TABLE_OUTCOME_NAME)
         currentBalance -= sum
     }

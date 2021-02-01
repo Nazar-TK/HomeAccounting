@@ -12,9 +12,6 @@ import kotlinx.android.synthetic.main.activity_pie_chart.*
 class PieChartActivity : AppCompatActivity() {
     private val dbManager = DbManager.getInstance(this)
 
-    var start=""
-    var end=""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)

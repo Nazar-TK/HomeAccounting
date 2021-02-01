@@ -33,17 +33,25 @@ class DbManager private constructor(context: Context) {
         db?.insert(tableName, null, moneyEvent.toContentValues())
     }
 
-    fun tableOpenInformation(tableName: String, columns:Array<String> = arrayOf("*"), groupBy:String = "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}" ): ArrayList<ArrayList<String>> {
-        var sql = ""
+    fun tableOpenInformation(tableName: String, columns:Array<String> = arrayOf("*"), orderBy:String = "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}" ): ArrayList<ArrayList<String>> {
 
+        var otherTableName = ""
+        var columnWithId = ""
+                                        //41-55 making sql query
         when(tableName){
-            DataBase.TABLE_OUTCOME_NAME -> sql = "SELECT ${columns.joinToString()} FROM ${DataBase.TABLE_OUTCOME_NAME} LEFT OUTER JOIN " +
-                    "${DataBase.TABLE_OUTCOME_CATEGORY_NAME} ON ${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_ID}=${DataBase.TABLE_OUTCOME_CATEGORY_NAME}._id " +
-                    "ORDER BY $groupBy"
-            DataBase.TABLE_INCOME_NAME -> sql = "SELECT ${columns.joinToString()} FROM ${DataBase.TABLE_INCOME_NAME} LEFT OUTER JOIN " +
-                    "${DataBase.TABLE_INCOME_CATEGORY_NAME} ON ${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_INCOME_CATEGORY_ID}=${DataBase.TABLE_INCOME_CATEGORY_NAME}._id " +
-                    "ORDER BY $groupBy"
+            DataBase.TABLE_OUTCOME_NAME -> {
+                otherTableName = DataBase.TABLE_OUTCOME_CATEGORY_NAME
+                columnWithId = DataBase.COLUMN_OUTCOME_CATEGORY_ID
+            }
+            DataBase.TABLE_INCOME_NAME -> {
+                otherTableName = DataBase.TABLE_INCOME_CATEGORY_NAME
+                columnWithId = DataBase.COLUMN_INCOME_CATEGORY_ID
+            }
         }
+
+        val sql = "SELECT ${columns.joinToString()} FROM $tableName LEFT OUTER JOIN " +
+                "$otherTableName ON $tableName.$columnWithId=$otherTableName._id " +
+                "ORDER BY $orderBy"
 
         val cursor = db?.rawQuery(sql, null)
         val dataList = ArrayList<ArrayList<String>>()
@@ -51,10 +59,8 @@ class DbManager private constructor(context: Context) {
         cursor?.use {
             while (it.moveToNext()) {
                 val tmpDataList = ArrayList<String>()
-                var i = 0
-                while (i < it.columnCount) {
+                for (i in 0 until it.columnCount) {
                     tmpDataList.add(it.getString(i))
-                    ++i
                 }
                 dataList.add(tmpDataList)
             }
@@ -62,23 +68,12 @@ class DbManager private constructor(context: Context) {
         return dataList
     }
 
-    fun getSumOfColumn(tableName: String, columnName: String): Float{
-        val sql = "SELECT SUM($columnName) FROM $tableName"
-        val cursor = db?.rawQuery(sql, null)
-        var res = 0f
-        cursor?.use {
-            it.moveToFirst()
-            res = it.getFloat(1)
-        }
-        return res
-    }
-
     fun sumForPeriod(tableName: String, dateAfter:String, dateBefore:String, category_id: Int?): Float {
         var sum =0f
         var columnNameValue = ""
         var columnNameDate = ""
         var columnNameCategoryId = ""
-
+                                     //77-94 making sql query
         when(tableName){
             DataBase.TABLE_OUTCOME_NAME -> {
                 columnNameValue = DataBase.COLUMN_OUTCOME_VALUE
@@ -100,9 +95,8 @@ class DbManager private constructor(context: Context) {
         
         val cursor = db?.rawQuery(sql, null)
         cursor?.use {
-            while (it.moveToNext()) {
-                sum = it.getFloat(0)
-            }
+            cursor.moveToFirst()
+            sum = it.getFloat(0)
         }
         return sum
     }
@@ -117,4 +111,5 @@ class DbManager private constructor(context: Context) {
         }
         return dataList
     }
+
 }

@@ -7,8 +7,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.roundToInt
 
-var currentBalance = 0f
+var currentBalance = 0.2f
 
 class MainActivity : AppCompatActivity()
 {
@@ -20,14 +21,14 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         pref = getSharedPreferences("SharedPreferences4currentBalance", MODE_PRIVATE)
-        currentBalance = pref.getFloat("current_balance", 0f)
+        currentBalance = pref.getFloat("current_balance", 0.2f)
         dbManager.openDb()
     }
 
     override fun onResume() {
         super.onResume()
         pref.edit().putFloat("current_balance", currentBalance).apply()
-        balance.text = currentBalance.toString()
+        balance.text = ((currentBalance * 100.0).roundToInt() /100.0).toString()
     }
 
     fun costMe (view: View){

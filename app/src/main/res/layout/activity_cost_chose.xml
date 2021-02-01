@@ -65,7 +65,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="30dp"
-        android:background="#CDCDCD"
+        android:background="#99CDCDCD"
         android:foregroundGravity="center_horizontal"
         android:onClick="safeSaveOutcome"
         android:text="Додати"

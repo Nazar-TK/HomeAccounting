@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#F0FFFF</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#F7301F</color>
     <color name="screenBackground">#F0FFFF</color>
     <color name="BackgroundCosts">#FFC107</color>
-    <color name="BackgroundIncome">#3FC744</color>
-    <color name="BackgroundStat">#006edb</color>
+    <color name="BackgroundIncome">#04950A</color>
+    <color name="BackgroundStat">#4B0082</color>
     <color name="colorStat">#00574B</color>
     <color name="TextWithBack">#F0F0F0</color>
     <color name="TextWithoutBack">#242424</color>
@@ -21,4 +21,5 @@
     <color name="BackgroundEntertainment">#57036B</color>
     <color name="BackgroundTransport">#1FB825</color>
     <color name="BackgroundUtilities">#02863F</color>
+
 </resources>

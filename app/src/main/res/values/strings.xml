@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">MyProject</string>
+    <string name="app_name">Home Accounting</string>
     <string name="hello_world_text">Баланс: </string>
-    <string name="costs_text">Витрати -</string>
-    <string name="income_text">Доходи  +</string>
-    <string name="statistic_text">Статистика ></string>
+    <string name="costs_text">Витрати</string>
+    <string name="income_text">Доходи</string>
+    <string name="statistic_text">Статистика</string>
     <string name="balance_text">0</string>
     <string name="credits_text">Кредити</string>
     <string name="mandatory_payments_text">Обов\'язкові платежі</string>

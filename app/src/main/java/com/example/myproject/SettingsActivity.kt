@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         val appSettingsPrefs: SharedPreferences = getSharedPreferences("NightModeOn", 0)

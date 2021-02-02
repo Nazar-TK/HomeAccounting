@@ -35,9 +35,10 @@ class IncomeHistory : AppCompatActivity() {
             myDbManager.tableOpenInformation(DataBase.TABLE_INCOME_NAME, columns, groupBy)
 
         while (i < info.size) {
-            categoryIncome.append("${info[i][0]}\n\n")
-            historyIncomeDate.append("${info[i][1]}\n\n")
-            historyIncomeData.append("${info[i][2]}\n\n")
+          //  categoryIncome.append("${info[i][0]}\n\n")
+          //  historyIncomeDate.append("${info[i][1]}\n\n")
+            var temp = info[i][0] + " \t\t" + info[i][1] + " \t\t" + info[i][2]
+            historyIncomeData.append("${temp}\n\n")
             i++
         }
 

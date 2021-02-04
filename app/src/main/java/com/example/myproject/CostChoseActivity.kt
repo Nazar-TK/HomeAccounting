@@ -3,11 +3,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
-import com.example.myproject.db.MyDbManager
+import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_cost_chose.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,7 +33,7 @@ class CostChoseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cost_chose)
 
         spinner.adapter = ArrayAdapter<String>(this, R.layout.style_spinner,
-            MyDbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME))
+            DbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME))
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -48,18 +47,6 @@ class CostChoseActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveOutcome(idOfCategory: Int, sum: String){
-
-        MyDbManager.getInstance(this).insertToDb(
-            arrayListOf(
-                idOfCategory.toString(),
-                sum,
-                getCurrentDateTime().toString("dd/MM/yyyy")
-            ),
-            DataBase.TABLE_OUTCOME_NAME
-        )
-    }
-
     private fun changeImage(){
         imageView.setImageResource(arrOfImages[currentChose - 1])
     }
@@ -68,13 +55,18 @@ class CostChoseActivity : AppCompatActivity() {
         layout.setBackgroundResource(arrOfColors[currentChose - 1])
     }
 
+    private fun saveOutcome(idOfCategory: Int, sum: Float){
+        val dbManager = DbManager.getInstance(this)
+        val outcomeEvent = OutcomeEvent(idOfCategory, sum, getCurrentDateTime().toString("yyyy/MM/dd"))
+        dbManager.insertToDb(outcomeEvent, DataBase.TABLE_OUTCOME_NAME)
+        currentBalance -= sum
+    }
 
     fun safeSaveOutcome(view: View){
 
         if(editText.text.isNotEmpty()) {
-            saveOutcome(currentChose, editText.text.toString())
+            saveOutcome(currentChose, editText.text.toString().toFloat())
             editText.text.clear()
-
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }
         else

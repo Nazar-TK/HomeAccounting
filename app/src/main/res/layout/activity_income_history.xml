@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/setting"
     tools:context=".IncomeHistory">
 
 
@@ -15,6 +16,7 @@
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
+        android:textColor="@color/TextWithoutBack"
         app:layout_constraintBottom_toTopOf="@+id/sumIncome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

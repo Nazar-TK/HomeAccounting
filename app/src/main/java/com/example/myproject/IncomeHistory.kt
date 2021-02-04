@@ -26,7 +26,7 @@ class IncomeHistory : AppCompatActivity() {
 
         val columns: Array<String> = arrayOf(
             "${DataBase.TABLE_INCOME_CATEGORY_NAME}.${DataBase.COLUMN_INCOME_CATEGORY_NAME}",
-            "${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_OUTCOME_DATE}",
+            "${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_INCOME_DATE}",
             "${DataBase.TABLE_INCOME_NAME}.${DataBase.COLUMN_INCOME_VALUE}"
         )
         val groupBy =

@@ -6,57 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".OutcomeHistory">
 
-    <!--   <EditText
-          android:id="@+id/categoryOutcome"
-          android:layout_width="133dp"
-          android:layout_height="0dp"
-          android:layout_marginBottom="46dp"
-          android:ems="10"
-          android:gravity="top"
-          android:inputType="textMultiLine|textPersonName"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toStartOf="@+id/historyOutcomeData"
-          app:layout_constraintHorizontal_bias="0.0"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.0" />
-  -->
-      <TextView
-          android:id="@+id/sumOutcome"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:inputType="textMultiLine"
-          android:textSize="36sp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent" />
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:ignore="MissingConstraints">
 
-    <EditText
-        android:id="@+id/historyOutcomeData"
-        android:layout_width="409dp"
-        android:layout_height="673dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="46dp"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <!--  <EditText
-          android:id="@+id/historyOutcomeDate"
-          android:layout_width="133dp"
-          android:layout_height="0dp"
-          android:layout_marginBottom="46dp"
-          android:ems="10"
-          android:gravity="top"
-          android:inputType="textMultiLine"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toStartOf="@+id/historyOutcomeData"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.0" />
-  -->
+        <TextView
+            android:id="@+id/sumOutcome"
+            android:layout_width="match_parent"
+            android:layout_height="114dp"
+            android:layout_below="@id/historyOutcomeData"
+            android:layout_marginTop="-55dp"
+            android:gravity="center"
+            android:textSize="36sp" />
 
+        <EditText
+            android:id="@+id/historyOutcomeData"
+            android:layout_width="409dp"
+            android:layout_height="673dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="46dp"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

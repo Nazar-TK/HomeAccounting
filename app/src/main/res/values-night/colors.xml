@@ -9,7 +9,7 @@
     <color name="BackgroundStat">#4B0082</color>
     <color name="colorStat">#00574B</color>
     <color name="TextWithBack">#FFFFFF</color>
-    <color name="TextWithoutBack">#C0C0C0</color>
+    <color name="TextWithoutBack">#FFFCFC</color>
     <color name="darkOrange">#FF6B00</color>
 
 
@@ -20,4 +20,6 @@
     <color name="BackgroundEntertainment">#62025D</color>
     <color name="BackgroundTransport">#1FB825</color>
     <color name="BackgroundUtilities">#02863F</color>
+    <color name="spinnerBackground">#D8020039</color>
+    <color name="spinnerTint">#D7400775</color>
 </resources>

@@ -10,6 +10,7 @@
         android:id="@+id/RelativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="@drawable/setting"
         tools:ignore="MissingConstraints">
 
 
@@ -20,7 +21,8 @@
             android:layout_below="@id/historyOutcomeData"
             android:layout_marginTop="-55dp"
             android:gravity="center"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:textColor="@color/TextWithoutBack"/>
 
         <EditText
             android:id="@+id/historyOutcomeData"
@@ -31,6 +33,8 @@
             android:ems="10"
             android:gravity="top"
             android:inputType="textMultiLine"
+            android:textColor="@color/TextWithoutBack"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

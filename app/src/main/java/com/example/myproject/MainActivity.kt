@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_settings.*
 import kotlin.math.roundToInt
 
 var currentBalance = 0.2f
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity()
     private lateinit var pref:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

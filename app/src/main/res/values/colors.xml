@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#F0FFFF</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#F7301F</color>
     <color name="screenBackground">#F0FFFF</color>
     <color name="BackgroundCosts">#FFC107</color>
@@ -9,7 +9,7 @@
     <color name="BackgroundStat">#4B0082</color>
     <color name="colorStat">#00574B</color>
     <color name="TextWithBack">#F0F0F0</color>
-    <color name="TextWithoutBack">#242424</color>
+    <color name="TextWithoutBack">#151515</color>
     <color name="darkOrange">#FF6B00</color>
     <color name="screenBackground3">#26CC49</color>
 
@@ -21,5 +21,7 @@
     <color name="BackgroundEntertainment">#57036B</color>
     <color name="BackgroundTransport">#1FB825</color>
     <color name="BackgroundUtilities">#02863F</color>
+    <color name="spinnerBackground">#D8189E01</color>
+    <color name="spinnerTint">#F01C8104</color>
 
 </resources>

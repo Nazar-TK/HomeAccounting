@@ -21,8 +21,8 @@ fun getCurrentDateTime(): Date {
 
 class CostChoseActivity : AppCompatActivity() {
     private var currentChose = 1
-    private val arrOfColors = arrayOf(R.color.BackgroundCredits, R.color.BackgroundFood,
-        R.color.BackgroundEntertainment, R.color.BackgroundTransport, R.color.BackgroundUtilities)
+//    private val arrOfColors = arrayOf(R.color.BackgroundCredits, R.color.BackgroundFood,
+//        R.color.BackgroundEntertainment, R.color.BackgroundTransport, R.color.BackgroundUtilities)
 
     private val arrOfImages = arrayOf(R.drawable.credyt, R.drawable.dishes,
         R.drawable.activities, R.drawable.transport, R.drawable.utiltties)
@@ -50,11 +50,14 @@ class CostChoseActivity : AppCompatActivity() {
     private fun changeImage(){
         imageView.setImageResource(arrOfImages[currentChose - 1])
     }
-
+/*
     private fun changeColor(){
         layout.setBackgroundResource(arrOfColors[currentChose - 1])
     }
-
+*/
+    private fun changeColor(){
+        layout.setBackgroundResource(R.drawable.setting)
+    }
     private fun saveOutcome(idOfCategory: Int, sum: Float){
         val dbManager = DbManager.getInstance(this)
         val outcomeEvent = OutcomeEvent(idOfCategory, sum, getCurrentDateTime().toString("yyyy/MM/dd"))

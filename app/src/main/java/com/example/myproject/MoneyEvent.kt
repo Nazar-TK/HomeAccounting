@@ -31,3 +31,19 @@ class OutcomeEvent(private val category_id: Int, private val value: Float, priva
         }
     }
 }
+
+class IncomeCategoryEvent(private val categoryName: String) : MoneyEvent(){
+    override fun toContentValues() : ContentValues{
+        return ContentValues().apply{
+            put(DataBase.COLUMN_INCOME_CATEGORY_NAME, categoryName)
+        }
+    }
+}
+
+class OutcomeCategoryEvent(private val categoryName: String) : MoneyEvent(){
+    override fun toContentValues() : ContentValues{
+        return ContentValues().apply{
+            put(DataBase.COLUMN_OUTCOME_CATEGORY_NAME, categoryName)
+        }
+    }
+}

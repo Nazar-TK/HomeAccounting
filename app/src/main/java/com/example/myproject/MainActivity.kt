@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlin.math.roundToInt
 
-var currentBalance = 0.2f
+var currentBalance = 0f
 
 class MainActivity : AppCompatActivity()
 {

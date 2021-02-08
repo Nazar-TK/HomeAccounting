@@ -1,16 +1,26 @@
 package com.example.myproject
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.DbManager
+import kotlinx.android.synthetic.main.activity_cost_chose.*
 import kotlinx.android.synthetic.main.activity_income.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class IncomeActivity : AppCompatActivity() {
+
+    private var currentChose = 0
+    val dbManager = DbManager.getInstance(this)
 
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
         val formatter = SimpleDateFormat(format, locale)
@@ -25,6 +35,20 @@ class IncomeActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income)
+        updateSpinner()
+        tempbutton2.setOnClickListener{
+            callDialog()
+        }
+
+        incomeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                currentChose = position
+            }
+        }
     }
 
     private fun saveIncome(category_id: Int, sum: Float) {
@@ -34,11 +58,35 @@ class IncomeActivity : AppCompatActivity() {
         currentBalance += sum
     }
 
+    private fun callDialog(){
+        val promptsView = LayoutInflater.from(this).inflate(R.layout.prompt, null);
+        val mDialogBuilder = AlertDialog.Builder(this);
+        val userInput = promptsView.findViewById<EditText>(R.id.input_text);
+
+        mDialogBuilder.setView(promptsView);
+
+        mDialogBuilder
+            .setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int ->
+                dbManager.insertToDb(IncomeCategoryEvent(userInput.text.toString()), DataBase.TABLE_INCOME_CATEGORY_NAME)
+                updateSpinner()
+            }
+            .setNegativeButton("Назад"){ dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.cancel()
+            }
+
+        val alertDialog = mDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private fun updateSpinner(){
+        val stringsInSpinner = DbManager.getInstance(this).readColumn(DataBase.TABLE_INCOME_CATEGORY_NAME, DataBase.COLUMN_INCOME_CATEGORY_NAME)
+        incomeSpinner.adapter = ArrayAdapter<String>(this, R.layout.style_spinner, stringsInSpinner)
+    }
+
     fun safeSaveIncome(view: View){
-        val ONE_TIME_INCOME = 1
-        if(incomeField.text.isNotEmpty()) {
-            saveIncome(ONE_TIME_INCOME, incomeField.text.toString().toFloat()) //We have only 1 income category yet
-            incomeField.text.clear()
+        if(incomeEditValue.text.isNotEmpty()) {
+            saveIncome(currentChose + 1, incomeEditValue.text.toString().toFloat())
+            incomeEditValue.text.clear()
             Toast.makeText(this, "Суму введено", Toast.LENGTH_LONG).show()
         }
         else

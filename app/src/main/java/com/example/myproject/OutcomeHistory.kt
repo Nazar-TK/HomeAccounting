@@ -22,12 +22,12 @@ class OutcomeHistory : AppCompatActivity() {
 
     // function to calculate num of spaces for output//
     private fun addSpases(s: String): Int {
-        var res = 19 + (19 - s.length)
+        val res = 19 + (19 - s.length)
         return res
     }
     private fun fillFields() {
         var sum = 0.0
-        var i = 0
+
         val columns: Array<String> = arrayOf(
             "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}",
             "${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_DATE}",
@@ -38,10 +38,9 @@ class OutcomeHistory : AppCompatActivity() {
         val info: ArrayList<ArrayList<String>> =
             myDbManager.tableOpenInformation(DataBase.TABLE_OUTCOME_NAME, columns, groupBy)
 
-        while (i < info.size) {
-            var temp = info[i][0].padEnd(addSpases(info[i][0]),' ') + info[i][1] + " \t\t" + info[i][2]
-        historyOutcomeData.append("${temp}\n\n")
-            i++
+        for (i in 0 until info.size) {
+            val temp = info[i][0].padEnd(addSpases(info[i][0]),' ') + info[i][1] + " \t\t" + info[i][2]
+            historyOutcomeData.append("${temp}\n\n")
         }
 
         val dataList =  myDbManager.readColumn(DataBase.TABLE_OUTCOME_NAME, DataBase.COLUMN_OUTCOME_VALUE)

@@ -8,21 +8,21 @@
     android:background="@drawable/setting"
     android:id="@+id/layout"
     tools:context=".CostChoseActivity">
-    //"@color/BackgroundCredits"
+
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/outcomeImageView"
         android:layout_width="wrap_content"
         android:layout_height="268dp"
         android:layout_marginTop="30dp"
         android:src="@drawable/credyt"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/outcomeSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/outcomeSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -33,14 +33,14 @@
         android:backgroundTint="@color/spinnerTint"
         android:popupBackground="@color/spinnerBackground"
         android:scrollbarSize="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/outcomeAddButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/outcomeEditValue"
+        app:layout_constraintTop_toBottomOf="@+id/outcomeImageView" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/outcomeEditValue"
         style="@android:style/Widget.AutoCompleteTextView"
         android:layout_width="182dp"
         android:layout_height="58dp"
@@ -52,15 +52,15 @@
         android:singleLine="false"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintBottom_toBottomOf="@+id/outcomeSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/outcomeSpinner"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="@+id/outcomeSpinner"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/outcomeAddButton"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginStart="70dp"
@@ -72,7 +72,7 @@
         android:foregroundGravity="center_horizontal"
         android:onClick="safeSaveOutcome"
         android:stateListAnimator="@null"
-        android:text="Додати"
+        android:text="@string/outcomeAddButtonText"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -80,7 +80,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/outcomeEditValue"
         app:layout_constraintVertical_bias="0.907" />
+
+    <Button
+        android:id="@+id/tempbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Додати категорію"
+        app:layout_constraintBottom_toTopOf="@+id/outcomeImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.533" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

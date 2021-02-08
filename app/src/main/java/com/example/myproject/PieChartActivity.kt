@@ -16,18 +16,18 @@ class PieChartActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pie_chart)
-        startDate.text = "20/01/2021"
-        endDate.text = "30/01/2021"
+        startDate.text = (getCurrentDateTime().toString("yyyy/MM/dd").dropLast(2) + "01")
+        endDate.text = getCurrentDateTime().toString("yyyy/MM/dd")
 
         val pieChart = PieChart(
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
         ).build()
 
-        startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = "%d/%02d/%02d".format(dayOfMonth ,month+1,year)})
-        endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = "%d/%02d/%02d".format(dayOfMonth ,month+1,year)})
+        startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = ("%02d/%02d/%d").format(year ,month+1,dayOfMonth)})
+        endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = ("%02d/%02d/%d").format(year ,month+1,dayOfMonth)})
 
-        chart.setPieChart(pieChart)     //output piechart
-        chart.showLegend(legendLayout)  //output legend
+        chart.setPieChart(pieChart)
+        chart.showLegend(legendLayout)
 
     }
 
@@ -37,12 +37,12 @@ class PieChartActivity : AppCompatActivity() {
         val pieChart = PieChart(
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
         ).build()
-        chart.setPieChart(pieChart)     //output piechart
-        chart.showLegend(legendLayout)  //output legend
+        chart.setPieChart(pieChart)
+        chart.showLegend(legendLayout)
 
     }
 
-    private fun provideSlices(): ArrayList<Slice> {        //builds slices for piechart
+    private fun provideSlices(): ArrayList<Slice> {
 
         return arrayListOf(
             Slice(

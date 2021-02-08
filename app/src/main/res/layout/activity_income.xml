@@ -7,47 +7,89 @@
     android:background="@drawable/setting"
     tools:context=".IncomeActivity">
 
-    <EditText
-        android:id="@+id/incomeField"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:ems="10"
-        android:hint="Введіть суму"
-        android:inputType="number|numberDecimal"
-        android:textColor="@color/TextWithoutBack"
-        android:textColorHint="@color/TextWithoutBack"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/incomeButton"
+
+    <ImageView
+        android:id="@+id/incomeImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="268dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/money"
+        app:layout_constraintBottom_toTopOf="@+id/incomeSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/incomeSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/style_spinner"
+        android:gravity="center"
+        android:radius="20dp"
+        android:backgroundTint="@color/spinnerTint"
+        android:popupBackground="@color/spinnerBackground"
+        android:scrollbarSize="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/incomeAddButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/incomeEditValue"
+        app:layout_constraintTop_toBottomOf="@+id/incomeImageView" />
+
+    <EditText
+        android:id="@+id/incomeEditValue"
+        style="@android:style/Widget.AutoCompleteTextView"
+        android:layout_width="182dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:foregroundTint="#FFFFFF"
+        android:inputType="number|numberDecimal"
+        android:singleLine="false"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/incomeSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/incomeSpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/incomeSpinner"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/incomeButton"
-        android:layout_width="190dp"
+        android:id="@+id/incomeAddButton"
+        android:layout_width="0dp"
         android:layout_height="80dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/costs_button"
         android:elevation="10dp"
+        android:foregroundGravity="center_horizontal"
         android:onClick="safeSaveIncome"
         android:stateListAnimator="@null"
-        android:text="Ввести"
-        android:textColor="@color/TextWithBack"
+        android:text="@string/incomeAddButtonText"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:translationZ="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incomeField" />
+        app:layout_constraintTop_toBottomOf="@+id/incomeEditValue"
+        app:layout_constraintVertical_bias="0.907" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="256dp"
-        android:layout_height="249dp"
-        app:layout_constraintBottom_toTopOf="@+id/incomeField"
+    <Button
+        android:id="@+id/tempbutton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Додати категорію"
+        app:layout_constraintBottom_toTopOf="@+id/incomeImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/money" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

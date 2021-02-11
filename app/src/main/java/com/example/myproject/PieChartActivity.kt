@@ -2,11 +2,13 @@ package com.example.myproject
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.DbManager
 import com.faskn.lib.PieChart
 import com.faskn.lib.Slice
+import kotlinx.android.synthetic.main.activity_outcome_history.*
 import kotlinx.android.synthetic.main.activity_pie_chart.*
 
 class PieChartActivity : AppCompatActivity() {
@@ -26,8 +28,32 @@ class PieChartActivity : AppCompatActivity() {
         startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = ("%02d/%02d/%d").format(year ,month+1,dayOfMonth)})
         endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = ("%02d/%02d/%d").format(year ,month+1,dayOfMonth)})
 
-        chart.setPieChart(pieChart)
-        chart.showLegend(legendLayout)
+        chart.setPieChart(pieChart)     //output piechart
+        chart.showLegend(legendLayout)  //output legend
+        fillFields()
+    }
+
+    private fun addSpases(s: String): Int {
+        var res = 19 + (19 - s.length)
+        return res
+    }
+    private fun fillFields() {
+        var sum = 0.0
+        var i = 0
+        val columns: Array<String> = arrayOf(
+            "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}",
+            "${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_DATE}",
+            "${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_VALUE}"
+        )
+        val groupBy =
+            "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}"
+        val info: ArrayList<ArrayList<String>> =
+            dbManager.tableOpenInformation(DataBase.TABLE_OUTCOME_NAME, columns, groupBy)
+        while (i < info.size) {
+            var temp = info[i][0].padEnd(addSpases(info[i][0]),' ') + info[i][1] + " \t\t" + info[i][2]
+            OutcomeData.append("${temp}\n\n")
+            i++
+        }
 
     }
 
@@ -37,9 +63,10 @@ class PieChartActivity : AppCompatActivity() {
         val pieChart = PieChart(
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
         ).build()
-        chart.setPieChart(pieChart)
-        chart.showLegend(legendLayout)
-
+        chart.setPieChart(pieChart)     //output piechart
+        chart.showLegend(legendLayout)  //output legend
+        OutcomeData.editableText.clear()
+        fillFields()
     }
 
     private fun provideSlices(): ArrayList<Slice> {

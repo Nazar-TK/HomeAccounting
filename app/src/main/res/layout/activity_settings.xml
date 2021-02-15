@@ -18,6 +18,8 @@
         android:text="Dark mode"
         android:textColor="@color/TextWithoutBack"
         android:textSize="26sp"
+        android:thumbTint="@color/switchTint"
+        android:trackTint="@color/switchBackgroundTint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

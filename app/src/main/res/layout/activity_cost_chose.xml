@@ -46,11 +46,16 @@
         android:layout_height="58dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/textVievTint"
         android:ems="10"
-        android:foregroundTint="#FFFFFF"
+
+
+
         android:inputType="number|numberDecimal"
         android:singleLine="false"
         android:textColor="#FFFFFF"
+
+        android:textCursorDrawable="@color/BackgroundIncome"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/outcomeSpinner"
         app:layout_constraintEnd_toStartOf="@+id/outcomeSpinner"

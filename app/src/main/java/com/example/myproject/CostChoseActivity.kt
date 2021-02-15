@@ -29,6 +29,8 @@ class CostChoseActivity : AppCompatActivity() {
     private val arrOfImages = arrayOf(R.drawable.credyt, R.drawable.dishes,
         R.drawable.activities, R.drawable.transport, R.drawable.utiltties)
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)

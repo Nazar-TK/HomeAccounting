@@ -25,6 +25,6 @@
     <color name="spinnerTint">#F01C8104</color>
     <color name="switchTint">#32C0FF</color>
     <color name="switchBackgroundTint">#85008BC8</color>
-    <color name="textVievTint">#1AB100</color>
+    <color name="textViewTint">#1AB100</color>
 
 </resources>

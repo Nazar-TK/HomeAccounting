@@ -46,7 +46,7 @@
         android:layout_height="58dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/textVievTint"
+        android:backgroundTint="@color/textViewTint"
         android:ems="10"
 
 

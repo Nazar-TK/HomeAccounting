@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_cost_chose.*
+import kotlinx.android.synthetic.main.activity_income.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -32,16 +33,11 @@ class CostChoseActivity : AppCompatActivity() {
         R.drawable.activities, R.drawable.transport, R.drawable.utiltties)
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cost_chose)
         updateSpinner()
-
-        tempbutton.setOnClickListener {
-            callDialog()
-        }
 
         outcomeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -50,25 +46,16 @@ class CostChoseActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 currentChose = position
-                changeImage()
+                if (currentChose == stringsInSpinner.size - 1) {
+                    callDialog()
+                    updateSpinner()
+                }
+                else{
+                    changeImage()
+                }
             }
         }
 
-        stringsInSpinner = DbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME)
-
-
-        outcomeSpinner.adapter = object : ArrayAdapter<String> (this, R.layout.style_spinner, stringsInSpinner){
-            override fun getDropDownView(
-                position: Int,
-                convertView: View?,
-                parent: ViewGroup
-            ): View {
-                val tv = super.getDropDownView(position, convertView, parent) as TextView
-                if (position == stringsInSpinner.size - 1)
-                    tv.setBackgroundColor(Color.RED);
-                return tv
-            }
-        }
     }
 
     private fun changeImage(){
@@ -100,7 +87,19 @@ class CostChoseActivity : AppCompatActivity() {
     }
 
     private fun updateSpinner(){
-        stringsInSpinner = DbManager.getInstance(this).readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME)
+        stringsInSpinner = dbManager.readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME).apply {add("+ Додати категорію")}
+        outcomeSpinner.adapter = object : ArrayAdapter<String> (this, R.layout.style_spinner, stringsInSpinner){
+            override fun getDropDownView(
+                position: Int,
+                convertView: View?,
+                parent: ViewGroup
+            ): View {
+                val tv = super.getDropDownView(position, convertView, parent) as TextView
+                if (position == stringsInSpinner.size - 1)
+                    tv.setBackgroundColor(Color.RED);
+                return tv
+            }
+        }
     }
 
 

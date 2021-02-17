@@ -35,9 +35,6 @@ class IncomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income)
 
-        tempbutton2.setOnClickListener{
-            callDialog()
-        }
         updateSpinner()
 
         incomeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{

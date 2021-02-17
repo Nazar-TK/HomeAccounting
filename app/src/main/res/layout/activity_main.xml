@@ -89,7 +89,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="50dp"
         android:background="#00FFFFFF"
@@ -101,13 +101,13 @@
         app:layout_constraintEnd_toStartOf="@+id/balance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statistic_button"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.57" />
 
     <TextView
         android:id="@+id/balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="10dp"
 
         android:background="#00F0FFFF"
         android:text="@string/balance_text"
@@ -127,7 +127,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/settings"
+        android:background="@drawable/sett"
         android:onClick="settings"
         app:layout_constraintBottom_toBottomOf="@+id/balance"
         app:layout_constraintEnd_toEndOf="parent"

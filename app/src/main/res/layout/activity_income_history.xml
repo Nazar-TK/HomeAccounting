@@ -1,35 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/setting"
     tools:context=".IncomeHistory">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
 
-    <EditText
-        android:id="@+id/historyIncomeData"
-        android:layout_width="409dp"
-        android:layout_height="673dp"
-        android:layout_marginEnd="4dp"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:textColor="@color/TextWithoutBack"
-        app:layout_constraintBottom_toTopOf="@+id/sumIncome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:background="@drawable/setting"
+        tools:context=".IncomeHistory">
+
+        <TextView
+            android:id="@+id/sumIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine|textImeMultiLine"
+            android:textSize="36sp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/historyIncomeData" />
+        <TextView
+            android:id="@+id/historyIncomeData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+</ScrollView>
+
+   <!-- <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:background="@drawable/setting"
+    tools:context=".IncomeHistory">
 
     <TextView
-    android:id="@+id/sumIncome"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:inputType="textMultiLine|textImeMultiLine"
-    android:textSize="36sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf = "@+id/historyIncomeData"
-    app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/historyIncomeData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/sumIncome"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:inputType="textMultiLine|textImeMultiLine"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyIncomeData" />
+</LinearLayout>
+
+-->
+
+
+
+

@@ -10,11 +10,18 @@
 
     <Switch
         android:id="@+id/switchTheme"
-        android:layout_width="375dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:text="Dark mode"
         android:textColor="@color/TextWithoutBack"
+        android:textSize="26sp"
+        android:thumbTint="@color/switchTint"
+        android:trackTint="@color/switchBackgroundTint"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseSwitchCompatOrMaterialXml" />

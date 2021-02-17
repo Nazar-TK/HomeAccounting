@@ -22,4 +22,10 @@
     <color name="BackgroundUtilities">#02863F</color>
     <color name="spinnerBackground">#D8020039</color>
     <color name="spinnerTint">#D7400775</color>
+    <color name="switchTint">#D6D5D5</color>
+    <color name="switchBackgroundTint">#FFFBFE</color>
+    <color name="textViewTint">#FFFFFF</color>
+
+
+
 </resources>

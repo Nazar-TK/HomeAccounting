@@ -31,8 +31,10 @@ class PieChartActivity : AppCompatActivity() {
         startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = ("%02d/%02d/%02d").format(year ,month+1,dayOfMonth)})
         endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = ("%02d/%02d/%02d").format(year ,month+1,dayOfMonth)})
 
+//        chart.setPieChart(pieChart)
+//        chart.showLegend(legendLayout)
         chart.setPieChart(pieChart)
-        chart.showLegend(legendLayout)
+        chart.showLegend(legendLayout,CustomLegendAdapter())
         fillFields()
     }
 
@@ -66,8 +68,10 @@ class PieChartActivity : AppCompatActivity() {
         val pieChart = PieChart(
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
         ).build()
-        chart.setPieChart(pieChart)     //output piechart
-        chart.showLegend(legendLayout)  //output legend
+//        chart.setPieChart(pieChart)     //output piechart
+//        chart.showLegend(legendLayout)  //output legend
+        chart.showLegend(legendLayout)
+        chart.showLegend(legendLayout,CustomLegendAdapter())
         OutcomeData.editableText.clear()
         fillFields()
     }

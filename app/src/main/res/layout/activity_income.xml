@@ -82,14 +82,5 @@
         app:layout_constraintTop_toBottomOf="@+id/incomeEditValue"
         app:layout_constraintVertical_bias="0.907" />
 
-    <Button
-        android:id="@+id/tempbutton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Додати категорію"
-        app:layout_constraintBottom_toTopOf="@+id/incomeImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

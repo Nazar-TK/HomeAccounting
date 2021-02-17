@@ -1,6 +1,7 @@
 package com.example.myproject
 
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ import kotlinx.android.synthetic.main.activity_pie_chart.*
 
 class PieChartActivity : AppCompatActivity() {
     private val dbManager = DbManager.getInstance(this)
-
+    private val pieColors = arrayOf(R.color.BackgroundCredits, R.color.blue,R.color.BackgroundTransport, R.color.BackgroundFood,
+        R.color.BackgroundBlackThem, R.color.BackgroundCosts, R.color.darkOrange, R.color.RedLight,
+        R.color.sapphire, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet, R.color.DarkViolet)
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
@@ -28,8 +31,8 @@ class PieChartActivity : AppCompatActivity() {
         startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = ("%02d/%02d/%02d").format(year ,month+1,dayOfMonth)})
         endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = ("%02d/%02d/%02d").format(year ,month+1,dayOfMonth)})
 
-        chart.setPieChart(pieChart)     //output piechart
-        chart.showLegend(legendLayout)  //output legend
+        chart.setPieChart(pieChart)
+        chart.showLegend(legendLayout)
         fillFields()
     }
 
@@ -40,7 +43,6 @@ class PieChartActivity : AppCompatActivity() {
     private fun fillFields() {
         OutcomeData.text.clear()
         var sum = 0.0
-        var i = 0
         val columns: Array<String> = arrayOf(
             "${DataBase.TABLE_OUTCOME_CATEGORY_NAME}.${DataBase.COLUMN_OUTCOME_CATEGORY_NAME}",
             "${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_DATE}",
@@ -50,10 +52,9 @@ class PieChartActivity : AppCompatActivity() {
             "${DataBase.TABLE_OUTCOME_NAME}.${DataBase.COLUMN_OUTCOME_DATE}"
         val info: ArrayList<ArrayList<String>> =
             dbManager.tableOpenInformation(DataBase.TABLE_OUTCOME_NAME, columns, groupBy, startDate.text.toString(), endDate.text.toString())
-        while (i < info.size) {
-            var temp = info[i][0].padEnd(addSpases(info[i][0]),' ') + info[i][1] + " \t\t" + info[i][2]
+        for (i in 0 until info.size) {
+            val temp = info[i][0].padEnd(addSpases(info[i][0]),' ') + info[i][1] + " \t\t" + info[i][2]
             OutcomeData.append("${temp}\n\n")
-            i++
         }
 
     }
@@ -72,34 +73,14 @@ class PieChartActivity : AppCompatActivity() {
     }
 
     private fun provideSlices(): ArrayList<Slice> {
-
-        return arrayListOf(
-            Slice(
-                dbManager.sumForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),1),
-                R.color.BackgroundCredits,
-                "Кредити"
-            ),
-            Slice(
-                dbManager.sumForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),2),
-                R.color.BackgroundFood,
-                "Харчування"
-            ),
-            Slice(
-                dbManager.sumForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),3),
-                R.color.BackgroundEntertainment,
-                "Розваги"
-            ),
-            Slice(
-                dbManager.sumForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),4),
-                R.color.BackgroundTransport,
-                "Транспорт"
-            ),
-            Slice(
-                dbManager.sumForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),5),
-                R.color.BackgroundUtilities,
-                "Комунальні послуги"
-            )
-        )
+        val category = dbManager.readColumn(DataBase.TABLE_OUTCOME_CATEGORY_NAME, DataBase.COLUMN_OUTCOME_CATEGORY_NAME)
+        val slices = arrayListOf<Slice>()
+        for (i in category.indices){
+            slices.add(Slice(dbManager.sumForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(),i+1),
+                        pieColors[i],
+                        category[i]))
+        }
+        return slices
     }
 
 }

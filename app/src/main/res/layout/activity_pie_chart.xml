@@ -8,6 +8,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="parent"
+    android:background="@color/colorPrimary"
 >
 
 
@@ -26,7 +27,7 @@
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
             app:animationDuration="500"
-            app:centerColor="#032949"
+            app:centerColor="@color/colorPrimary"
             app:layout_constraintBottom_toTopOf="@+id/startCalendar"
             app:layout_constraintEnd_toStartOf="@+id/legendLayout"
             app:layout_constraintHorizontal_bias="0.6"
@@ -48,7 +49,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chart"
             app:layout_constraintTop_toTopOf="@+id/chart"
-            app:layout_constraintVertical_bias="0.43">
+            app:layout_constraintVertical_bias="0.43"
+            android:theme="@style/CalenderViewCustom"
+            >
 
         </FrameLayout>
 
@@ -58,7 +61,8 @@
             android:layout_height="291dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="5dp"
-            android:background="#1E00BCD4"
+            android:background="@color/calendarBackground"
+            android:backgroundTint="@color/calendarBackground"
             app:layout_constraintEnd_toStartOf="@+id/endCalendar"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,18 +75,21 @@
             android:layout_height="288dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#1A939E"
-            android:backgroundTint="#1B00BCD4"
+            android:textColorPrimary="@color/BackgroundIncome"
+            android:background="@color/calendarBackground"
+            android:backgroundTint="@color/calendarBackground"
             android:focusedMonthDateColor="#E6B52EFF"
             android:foregroundTint="#DFF33636"
             android:selectedWeekBackgroundColor="#9E3113DF"
             android:unfocusedMonthDateColor="#5E721F1F"
-            android:weekNumberColor="#B7131010"
+            android:weekNumberColor="@color/BackgroundIncome"
             app:layout_constraintBottom_toBottomOf="@+id/startCalendar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/startCalendar"
             app:layout_constraintTop_toTopOf="@+id/startCalendar"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:theme="@style/CalenderViewCustom"
+            />
 
 
         <TextView
@@ -119,7 +126,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="#36424242"
-            android:onClick="updateChart"
             android:text="@android:string/ok"
             app:layout_constraintBottom_toTopOf="@+id/OutcomeData"
             app:layout_constraintEnd_toEndOf="parent"

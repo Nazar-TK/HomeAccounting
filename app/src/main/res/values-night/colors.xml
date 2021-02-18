@@ -11,6 +11,7 @@
     <color name="TextWithBack">#FFFFFF</color>
     <color name="TextWithoutBack">#FFFCFC</color>
     <color name="darkOrange">#FF6B00</color>
+    <color name="calendarBackground">#aa7aaa</color>
 
 
     //new color #6C63FF #09A609

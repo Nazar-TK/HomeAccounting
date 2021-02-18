@@ -21,20 +21,18 @@ class PieChartActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pie_chart)
+
+        ok.setOnClickListener{
+            updateChart()
+            fillFields()
+        }
         startDate.text = (getCurrentDateTime().toString("yyyy/MM/dd").dropLast(2) + "01")
         endDate.text = getCurrentDateTime().toString("yyyy/MM/dd")
 
-        val pieChart = PieChart(
-            slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
-        ).build()
 
         startCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> startDate.text = ("%02d/%02d/%02d").format(year ,month+1,dayOfMonth)})
         endCalendar.setOnDateChangeListener({TextView, year, month, dayOfMonth -> endDate.text = ("%02d/%02d/%02d").format(year ,month+1,dayOfMonth)})
-
-//        chart.setPieChart(pieChart)
-//        chart.showLegend(legendLayout)
-        chart.setPieChart(pieChart)
-        chart.showLegend(legendLayout,CustomLegendAdapter())
+        updateChart()
         fillFields()
     }
 
@@ -61,19 +59,16 @@ class PieChartActivity : AppCompatActivity() {
 
     }
 
-    fun updateChart(view: View) {
-        fillFields()
+    fun updateChart() {
         summa.text = dbManager.sumForPeriod(DataBase.TABLE_OUTCOME_NAME, startDate.text.toString(),endDate.text.toString(), null).toString()
 
         val pieChart = PieChart(
             slices = provideSlices(), clickListener = null, sliceStartPoint = 0f, sliceWidth = 80f         //build piechart
         ).build()
-//        chart.setPieChart(pieChart)     //output piechart
-//        chart.showLegend(legendLayout)  //output legend
-        chart.showLegend(legendLayout)
+
+        chart.setPieChart(pieChart)
         chart.showLegend(legendLayout,CustomLegendAdapter())
         OutcomeData.editableText.clear()
-        fillFields()
     }
 
     private fun provideSlices(): ArrayList<Slice> {

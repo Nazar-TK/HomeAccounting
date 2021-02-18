@@ -5,9 +5,11 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.myproject.db.DbManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
+import java.io.IOException
 import kotlin.math.roundToInt
 
 var currentBalance = 0f
@@ -18,12 +20,29 @@ class MainActivity : AppCompatActivity()
     private lateinit var pref:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        try{
+            appSettingsPrefs = getSharedPreferences("NightModeOn", 0)
+
+            val isNightModeOn: Boolean = appSettingsPrefs.getBoolean("NightModeOn", false)
+
+            if(isNightModeOn){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+        catch (e: IOException){
+
+        }
+
+
         pref = getSharedPreferences("SharedPreferences4currentBalance", MODE_PRIVATE)
-        currentBalance = pref.getFloat("current_balance", 0.2f)
+        currentBalance = pref.getFloat("current_balance", 0.0f)
         dbManager.openDb()
     }
 

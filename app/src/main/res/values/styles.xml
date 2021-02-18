@@ -10,6 +10,11 @@
 
     </style>
 
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/RedLight</item>
+        <item name="colorPrimary">@color/RedLight</item>
+    </style>
+
 
 
 </resources>

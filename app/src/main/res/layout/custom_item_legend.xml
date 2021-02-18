@@ -22,7 +22,7 @@
             android:layout_toEndOf="@+id/imageViewCircleIndicator"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@android:color/black"
+            android:textColor="@color/TextWithoutBack"
             android:textSize="20sp"
             tools:text="1648 ziyaret" />
     </RelativeLayout>

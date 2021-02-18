@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DbManager
+import com.example.myproject.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlin.math.roundToInt
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity()
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
         pref = getSharedPreferences("SharedPreferences4currentBalance", MODE_PRIVATE)
         currentBalance = pref.getFloat("current_balance", 0.2f)
         dbManager.openDb()
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity()
 
     override fun onResume() {
         super.onResume()
+
         pref.edit().putFloat("current_balance", currentBalance).apply()
         balance.text = ((currentBalance * 100.0).roundToInt() /100.0).toString()
     }

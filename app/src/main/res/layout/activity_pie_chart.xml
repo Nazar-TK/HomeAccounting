@@ -24,7 +24,7 @@
             android:layout_height="200dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:layout_weight="1"
             app:animationDuration="500"
             app:centerColor="#032949"
@@ -95,11 +95,12 @@
             android:text="from"
             android:textColor="#00B408"
             android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/OutcomeData"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ok"
             app:layout_constraintEnd_toEndOf="@+id/startCalendar"
             app:layout_constraintHorizontal_bias="0.553"
             app:layout_constraintStart_toStartOf="@+id/startCalendar"
-            app:layout_constraintTop_toBottomOf="@+id/startCalendar" />
+            app:layout_constraintTop_toTopOf="@+id/ok" />
 
         <TextView
             android:id="@+id/endDate"
@@ -109,25 +110,26 @@
             android:text="to"
             android:textColor="#009706"
             android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/OutcomeData"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ok"
             app:layout_constraintEnd_toEndOf="@+id/endCalendar"
-            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintHorizontal_bias="0.56"
             app:layout_constraintStart_toEndOf="@+id/startCalendar"
-            app:layout_constraintTop_toBottomOf="@+id/endCalendar" />
+            app:layout_constraintTop_toTopOf="@+id/ok" />
 
         <Button
             android:id="@+id/ok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_marginTop="30dp"
-            android:background="#36424242"
-            android:elevation="6dp"
+            android:background="@drawable/pie_chart_button"
+            android:elevation="4dp"
             android:text="@android:string/ok"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:translationZ="6dp"
             app:layout_constraintBottom_toTopOf="@+id/OutcomeData"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/endCalendar" />
 

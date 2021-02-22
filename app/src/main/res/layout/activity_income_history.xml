@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
 
-        android:background="@drawable/setting"
+
         tools:context=".IncomeHistory">
 
         <TextView
@@ -26,6 +26,7 @@
             android:inputType="textMultiLine|textImeMultiLine"
             android:textSize="36sp"
             android:gravity="center"
+            android:textColor="@color/TextWithoutBack"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +34,7 @@
         <TextView
             android:id="@+id/historyIncomeData"
             android:layout_width="wrap_content"
+            android:textColor="@color/TextWithoutBack"
             android:layout_height="wrap_content" />
 
 

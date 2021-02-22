@@ -48,8 +48,8 @@ object DataBase : BaseColumns{
     //    TABLE_INCOME_CATEGORY_NAME to TableIncomeCategory, TABLE_OUTCOME_CATEGORY_NAME to TableOutcomeCategory);
 
             //Table categories
-    val OutcomeCategories: Array<String> = arrayOf("кредити","харчування","розваги","транспорт","комунальні послуги")
-    val IncomeCategories: Array<String> = arrayOf("одноразовий дохід")
+    val OutcomeCategories: Array<String> = arrayOf("Кредити","Харчування","Розваги","Транспорт","Комунальні послуги")
+    val IncomeCategories: Array<String> = arrayOf("Одноразовий дохід")
 
             //Table Delete Statements
     const val DELETE_TABLE_INCOME = "DROP TABLE IF EXISTS $TABLE_INCOME_NAME"

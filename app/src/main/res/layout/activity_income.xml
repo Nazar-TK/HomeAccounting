@@ -49,7 +49,7 @@
         android:foregroundTint="#FFFFFF"
         android:inputType="number|numberDecimal"
         android:singleLine="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/TextWithoutBack"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/incomeSpinner"
         app:layout_constraintEnd_toStartOf="@+id/incomeSpinner"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#F0FFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#F7301F</color>
     <color name="screenBackground">#F0FFFF</color>
@@ -9,12 +10,13 @@
     <color name="BackgroundStat">#4B0082</color>
     <color name="colorStat">#00574B</color>
     <color name="TextWithBack">#F0F0F0</color>
-    <color name="TextWithoutBack">#151515</color>
+    <color name="TextWithoutBack">#050505</color>
     <color name="darkOrange">#FF6B00</color>
     <color name="screenBackground3">#26CC49</color>
     <color name="sapphire">#34D0BA</color>
     <color name="DarkViolet">#9400D3</color>
-    <color name="calendarBackground">#1A939E</color>
+    <color name="calendarBackground">#1B00BCD4</color>
+
     <color name="RedLight">#FB3F51</color>
     <color name="blue">#2196F3</color>
     //new color

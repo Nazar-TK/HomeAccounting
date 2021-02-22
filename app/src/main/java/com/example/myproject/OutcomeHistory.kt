@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myproject.db.DataBase
 import com.example.myproject.db.DbManager
+import com.example.myproject.SettingsActivity
 import kotlinx.android.synthetic.main.activity_outcome_history.*
 import android.app.ActionBar
+import android.content.Intent
 import android.graphics.Color
 import android.util.Log
 import android.view.View
@@ -48,10 +50,14 @@ class OutcomeHistory : AppCompatActivity() {
                 layer.apply {
                     layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                         TableRow.LayoutParams.WRAP_CONTENT)
-                    text = info[i][j] + " " + "\t" + "\n"
-                    textSize = 19F
+                    text = "  " + info[i][j] + " " + "\t" + "\n"
+                    textSize = 20F
                 }
-                layer.setTextColor(Color.parseColor("black"));
+
+
+                layer.setTextColor(Color.parseColor("white"));
+
+
 
                 row.addView(layer)
             }

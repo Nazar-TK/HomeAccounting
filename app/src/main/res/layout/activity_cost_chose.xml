@@ -53,7 +53,7 @@
 
         android:inputType="number|numberDecimal"
         android:singleLine="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/TextWithoutBack"
 
         android:textCursorDrawable="@color/BackgroundIncome"
         android:textSize="30sp"

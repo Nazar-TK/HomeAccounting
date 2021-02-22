@@ -48,7 +48,7 @@ class IncomeHistory : AppCompatActivity() {
                     layoutParams = TableRow.LayoutParams(
                         TableRow.LayoutParams.WRAP_CONTENT,
                         TableRow.LayoutParams.WRAP_CONTENT)
-                    text = info[i][j] + " " + "\t" + "\n"
+                    text = "  " +info[i][j] + " " + "\t" + "\n"
                     textSize = 19F
                 }
                 layer.setTextColor(Color.parseColor("black"));

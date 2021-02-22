@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.myproject.db.DbManager
+import com.example.myproject.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.io.IOException
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity()
     private lateinit var pref:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

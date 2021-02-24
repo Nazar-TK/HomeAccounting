@@ -9,75 +9,15 @@
     tools:context=".StatActivity">
 
     <Button
-        android:id="@+id/buttonDay"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/statistics_buttons"
-        android:elevation="10dp"
-        android:onClick="backToMain"
-        android:stateListAnimator="@null"
-        android:text="@string/day_text"
-        android:textAllCaps="false"
-        android:textColor="@color/TextWithBack"
-        android:textSize="30sp"
-        android:translationZ="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonWeek"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonWeek"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/statistics_buttons"
-        android:elevation="10dp"
-        android:stateListAnimator="@null"
-        android:text="@string/week_text"
-        android:textAllCaps="false"
-        android:textColor="@color/TextWithBack"
-        android:textSize="30sp"
-        android:translationZ="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMouth"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDay" />
-
-    <Button
-        android:id="@+id/buttonMouth"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/statistics_buttons"
-        android:elevation="10dp"
-        android:onClick="PieChartMe"
-        android:stateListAnimator="@null"
-        android:text="@string/mounth_text"
-        android:textAllCaps="false"
-        android:textColor="@color/TextWithBack"
-        android:textSize="30sp"
-        android:translationZ="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOutcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonWeek" />
-
-    <Button
         android:id="@+id/buttonOutcome"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/statistics_buttons"
         android:elevation="10dp"
-        android:onClick="OutcomeHistoryMe"
+        android:onClick="PieChartMe"
         android:stateListAnimator="@null"
         android:text="@string/History_Outcome_text"
         android:textAllCaps="false"
@@ -87,8 +27,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonAll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMouth" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonAll"
@@ -96,7 +35,6 @@
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:background="@drawable/statistics_buttons"
         android:elevation="10dp"
         android:onClick="HistoryMe"
@@ -106,19 +44,23 @@
         android:textColor="@color/TextWithBack"
         android:textSize="30sp"
         android:translationZ="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOutcome" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.634" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAll"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157"
         app:srcCompat="@drawable/statistics" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

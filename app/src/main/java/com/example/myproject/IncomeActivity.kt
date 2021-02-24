@@ -64,6 +64,7 @@ class IncomeActivity : AppCompatActivity() {
         mDialogBuilder
             .setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int ->
                 dbManager.insertToDb(IncomeCategoryEvent(userInput.text.toString()), DataBase.TABLE_INCOME_CATEGORY_NAME)
+                updateSpinner()
             }
             .setNegativeButton("Назад"){ dialogInterface: DialogInterface, i: Int ->
                 dialogInterface.cancel()

@@ -9,7 +9,6 @@ import com.example.myproject.db.DataBase
 import com.example.myproject.db.DbManager
 import com.faskn.lib.PieChart
 import com.faskn.lib.Slice
-import kotlinx.android.synthetic.main.activity_outcome_history.*
 import kotlinx.android.synthetic.main.activity_pie_chart.*
 
 class PieChartActivity : AppCompatActivity() {

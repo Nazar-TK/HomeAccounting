@@ -14,7 +14,7 @@ class StatActivity : AppCompatActivity() {
     }
 
     fun HistoryMe (view: View){
-        val statIntent = Intent(this, IncomeHistory::class.java)
+        val statIntent = Intent(this, PieChartIncome::class.java)
         startActivity(statIntent)
     }
     fun OutcomeHistoryMe (view: View){
@@ -24,11 +24,6 @@ class StatActivity : AppCompatActivity() {
     fun PieChartMe (view: View){
         val statIntent = Intent(this, PieChartActivity::class.java)
         startActivity(statIntent)
-    }
-    fun backToMain(view: View)
-    {
-        val BackIntent = Intent(this, MainActivity::class.java)
-        startActivity(BackIntent)
     }
 }
 

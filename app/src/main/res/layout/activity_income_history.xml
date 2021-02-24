@@ -1,79 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="parent"
     android:background="@drawable/setting"
-    tools:context=".IncomeHistory">
+    >
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
 
-        tools:context=".IncomeHistory">
+        <com.faskn.lib.ClickablePieChart
+            android:id="@+id/chartI"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            app:animationDuration="500"
+            app:centerColor="#032949"
+            app:layout_constraintBottom_toTopOf="@+id/startCalendarI"
+            app:layout_constraintEnd_toStartOf="@+id/legendLayoutI"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:popupText="Гривень"
+            app:showPercentage="true"
+            app:showPopup="true" />
+
+        <FrameLayout
+            android:id="@+id/legendLayoutI"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/chartI"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chartI"
+            app:layout_constraintTop_toTopOf="@+id/chartI"
+            app:layout_constraintVertical_bias="0.43">
+
+        </FrameLayout>
+
+        <CalendarView
+            android:id="@+id/startCalendarI"
+            android:layout_width="0dp"
+            android:layout_height="292dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/calendarBackground"
+            android:dateTextAppearance="@style/CalenderViewDateCustomText"
+            android:theme="@style/CalendarViewCustom"
+            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+            app:layout_constraintBottom_toTopOf="@+id/okI"
+            app:layout_constraintEnd_toStartOf="@+id/endCalendarI"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chartI" />
+
+
+        <CalendarView
+            android:id="@+id/endCalendarI"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="#45033F"
+            android:backgroundTint="@color/calendarBackground"
+            android:dateTextAppearance="@style/CalenderViewDateCustomText"
+            android:theme="@style/CalendarViewCustom"
+            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+            app:layout_constraintBottom_toBottomOf="@+id/startCalendarI"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/startCalendarI"
+            app:layout_constraintTop_toTopOf="@+id/startCalendarI"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/sumIncome"
+            android:id="@+id/startDateI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:text="from"
+            android:textColor="#00B408"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/okI"
+            app:layout_constraintEnd_toEndOf="@+id/startCalendarI"
+            app:layout_constraintHorizontal_bias="0.553"
+            app:layout_constraintStart_toStartOf="@+id/startCalendarI"
+            app:layout_constraintTop_toTopOf="@+id/okI" />
+
+        <TextView
+            android:id="@+id/endDateI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="to"
+            android:textColor="#009706"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/okI"
+            app:layout_constraintEnd_toEndOf="@+id/endCalendarI"
+            app:layout_constraintHorizontal_bias="0.56"
+            app:layout_constraintStart_toEndOf="@+id/startCalendarI"
+            app:layout_constraintTop_toTopOf="@+id/okI" />
+
+        <Button
+            android:id="@+id/okI"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:elevation="4dp"
+            android:text="@android:string/ok"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:translationZ="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/OutcomeDataI"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/endCalendarI" />
+
+        <TextView
+            android:id="@+id/summaI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/chartI"
+            app:layout_constraintEnd_toEndOf="@+id/chartI"
+            app:layout_constraintStart_toStartOf="@+id/chartI"
+            app:layout_constraintTop_toTopOf="@+id/chartI"
+            app:layout_constraintVertical_bias="0.494" />
+
+        <EditText
+            android:id="@+id/OutcomeDataI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine|textImeMultiLine"
-            android:textSize="36sp"
-            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
             android:textColor="@color/TextWithoutBack"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/historyIncomeData" />
-        <TextView
-            android:id="@+id/historyIncomeData"
-            android:layout_width="wrap_content"
-            android:textColor="@color/TextWithoutBack"
-            android:layout_height="wrap_content" />
+            app:layout_constraintTop_toBottomOf="@+id/okI" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </LinearLayout>
 </ScrollView>
-
-   <!-- <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-
-    android:background="@drawable/setting"
-    tools:context=".IncomeHistory">
-
-    <TextView
-        android:id="@+id/historyIncomeData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-    <TextView
-        android:id="@+id/sumIncome"
-        android:layout_width="match_parent"
-        android:layout_height="98dp"
-        android:inputType="textMultiLine|textImeMultiLine"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/historyIncomeData" />
-</LinearLayout>
-
--->
-
-
-
-

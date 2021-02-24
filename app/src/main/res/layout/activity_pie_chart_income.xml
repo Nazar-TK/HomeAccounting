@@ -9,7 +9,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="parent"
     android:background="@drawable/setting"
->
+    >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
 
 
         <com.faskn.lib.ClickablePieChart
-            android:id="@+id/chart"
+            android:id="@+id/chartI"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginStart="10dp"
@@ -28,8 +28,8 @@
             android:layout_weight="1"
             app:animationDuration="500"
             app:centerColor="#032949"
-            app:layout_constraintBottom_toTopOf="@+id/startCalendar"
-            app:layout_constraintEnd_toStartOf="@+id/legendLayout"
+            app:layout_constraintBottom_toTopOf="@+id/startCalendarI"
+            app:layout_constraintEnd_toStartOf="@+id/legendLayoutI"
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,22 +39,22 @@
             app:showPopup="true" />
 
         <FrameLayout
-            android:id="@+id/legendLayout"
+            android:id="@+id/legendLayoutI"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            app:layout_constraintBottom_toBottomOf="@+id/chart"
+            app:layout_constraintBottom_toBottomOf="@+id/chartI"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chart"
-            app:layout_constraintTop_toTopOf="@+id/chart"
+            app:layout_constraintStart_toEndOf="@+id/chartI"
+            app:layout_constraintTop_toTopOf="@+id/chartI"
             app:layout_constraintVertical_bias="0.43">
 
         </FrameLayout>
 
         <CalendarView
-            android:id="@+id/startCalendar"
+            android:id="@+id/startCalendarI"
             android:layout_width="0dp"
             android:layout_height="292dp"
             android:layout_marginStart="10dp"
@@ -63,15 +63,15 @@
             android:dateTextAppearance="@style/CalenderViewDateCustomText"
             android:theme="@style/CalendarViewCustom"
             android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
-            app:layout_constraintBottom_toTopOf="@+id/ok"
-            app:layout_constraintEnd_toStartOf="@+id/endCalendar"
+            app:layout_constraintBottom_toTopOf="@+id/okI"
+            app:layout_constraintEnd_toStartOf="@+id/endCalendarI"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chart" />
+            app:layout_constraintTop_toBottomOf="@+id/chartI" />
 
 
         <CalendarView
-            android:id="@+id/endCalendar"
+            android:id="@+id/endCalendarI"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="5dp"
@@ -81,14 +81,14 @@
             android:dateTextAppearance="@style/CalenderViewDateCustomText"
             android:theme="@style/CalendarViewCustom"
             android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
-            app:layout_constraintBottom_toBottomOf="@+id/startCalendar"
+            app:layout_constraintBottom_toBottomOf="@+id/startCalendarI"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/startCalendar"
-            app:layout_constraintTop_toTopOf="@+id/startCalendar"
+            app:layout_constraintStart_toEndOf="@+id/startCalendarI"
+            app:layout_constraintTop_toTopOf="@+id/startCalendarI"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/startDate"
+            android:id="@+id/startDateI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="50dp"
@@ -96,14 +96,14 @@
             android:textColor="#00B408"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/ok"
-            app:layout_constraintEnd_toEndOf="@+id/startCalendar"
+            app:layout_constraintBottom_toBottomOf="@+id/okI"
+            app:layout_constraintEnd_toEndOf="@+id/startCalendarI"
             app:layout_constraintHorizontal_bias="0.553"
-            app:layout_constraintStart_toStartOf="@+id/startCalendar"
-            app:layout_constraintTop_toTopOf="@+id/ok" />
+            app:layout_constraintStart_toStartOf="@+id/startCalendarI"
+            app:layout_constraintTop_toTopOf="@+id/okI" />
 
         <TextView
-            android:id="@+id/endDate"
+            android:id="@+id/endDateI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -111,14 +111,14 @@
             android:textColor="#009706"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/ok"
-            app:layout_constraintEnd_toEndOf="@+id/endCalendar"
+            app:layout_constraintBottom_toBottomOf="@+id/okI"
+            app:layout_constraintEnd_toEndOf="@+id/endCalendarI"
             app:layout_constraintHorizontal_bias="0.56"
-            app:layout_constraintStart_toEndOf="@+id/startCalendar"
-            app:layout_constraintTop_toTopOf="@+id/ok" />
+            app:layout_constraintStart_toEndOf="@+id/startCalendarI"
+            app:layout_constraintTop_toTopOf="@+id/okI" />
 
         <Button
-            android:id="@+id/ok"
+            android:id="@+id/okI"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"
@@ -128,26 +128,26 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:translationZ="6dp"
-            app:layout_constraintBottom_toTopOf="@+id/OutcomeData"
+            app:layout_constraintBottom_toTopOf="@+id/OutcomeDataI"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/endCalendar" />
+            app:layout_constraintTop_toBottomOf="@+id/endCalendarI" />
 
         <TextView
-            android:id="@+id/summa"
+            android:id="@+id/summaI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:textSize="36sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/chart"
-            app:layout_constraintEnd_toEndOf="@+id/chart"
-            app:layout_constraintStart_toStartOf="@+id/chart"
-            app:layout_constraintTop_toTopOf="@+id/chart"
+            app:layout_constraintBottom_toBottomOf="@+id/chartI"
+            app:layout_constraintEnd_toEndOf="@+id/chartI"
+            app:layout_constraintStart_toStartOf="@+id/chartI"
+            app:layout_constraintTop_toTopOf="@+id/chartI"
             app:layout_constraintVertical_bias="0.494" />
 
         <EditText
-            android:id="@+id/OutcomeData"
+            android:id="@+id/OutcomeDataI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -161,10 +161,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ok" />
+            app:layout_constraintTop_toBottomOf="@+id/okI" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
-
-
